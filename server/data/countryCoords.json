@@ -1,0 +1,2074 @@
+{
+  "ABW": {
+    "name": "Aruba",
+    "iso2": "AW",
+    "capitalCity": "Oranjestad",
+    "lat": 12.5167,
+    "lng": -70.0167
+  },
+  "AFE": {
+    "name": "Africa Eastern and Southern",
+    "iso2": "ZH",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "AFG": {
+    "name": "Afghanistan",
+    "iso2": "AF",
+    "capitalCity": "Kabul",
+    "lat": 34.5228,
+    "lng": 69.1761
+  },
+  "AFR": {
+    "name": "Africa",
+    "iso2": "A9",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "AFW": {
+    "name": "Africa Western and Central",
+    "iso2": "ZI",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "AGO": {
+    "name": "Angola",
+    "iso2": "AO",
+    "capitalCity": "Luanda",
+    "lat": -8.81155,
+    "lng": 13.242
+  },
+  "ALB": {
+    "name": "Albania",
+    "iso2": "AL",
+    "capitalCity": "Tirane",
+    "lat": 41.3317,
+    "lng": 19.8172
+  },
+  "AND": {
+    "name": "Andorra",
+    "iso2": "AD",
+    "capitalCity": "Andorra la Vella",
+    "lat": 42.5075,
+    "lng": 1.5218
+  },
+  "ARB": {
+    "name": "Arab World",
+    "iso2": "1A",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "ARE": {
+    "name": "United Arab Emirates",
+    "iso2": "AE",
+    "capitalCity": "Abu Dhabi",
+    "lat": 24.4764,
+    "lng": 54.3705
+  },
+  "ARG": {
+    "name": "Argentina",
+    "iso2": "AR",
+    "capitalCity": "Buenos Aires",
+    "lat": -34.6118,
+    "lng": -58.4173
+  },
+  "ARM": {
+    "name": "Armenia",
+    "iso2": "AM",
+    "capitalCity": "Yerevan",
+    "lat": 40.1596,
+    "lng": 44.509
+  },
+  "ASM": {
+    "name": "American Samoa",
+    "iso2": "AS",
+    "capitalCity": "Pago Pago",
+    "lat": -14.2846,
+    "lng": -170.691
+  },
+  "ATG": {
+    "name": "Antigua and Barbuda",
+    "iso2": "AG",
+    "capitalCity": "Saint John's",
+    "lat": 17.1175,
+    "lng": -61.8456
+  },
+  "AUS": {
+    "name": "Australia",
+    "iso2": "AU",
+    "capitalCity": "Canberra",
+    "lat": -35.282,
+    "lng": 149.129
+  },
+  "AUT": {
+    "name": "Austria",
+    "iso2": "AT",
+    "capitalCity": "Vienna",
+    "lat": 48.2201,
+    "lng": 16.3798
+  },
+  "AZE": {
+    "name": "Azerbaijan",
+    "iso2": "AZ",
+    "capitalCity": "Baku",
+    "lat": 40.3834,
+    "lng": 49.8932
+  },
+  "BDI": {
+    "name": "Burundi",
+    "iso2": "BI",
+    "capitalCity": "Bujumbura",
+    "lat": -3.3784,
+    "lng": 29.3639
+  },
+  "BEA": {
+    "name": "East Asia & Pacific (IBRD-only countries)",
+    "iso2": "B4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BEC": {
+    "name": "Europe & Central Asia (IBRD-only countries)",
+    "iso2": "B7",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BEL": {
+    "name": "Belgium",
+    "iso2": "BE",
+    "capitalCity": "Brussels",
+    "lat": 50.8371,
+    "lng": 4.36761
+  },
+  "BEN": {
+    "name": "Benin",
+    "iso2": "BJ",
+    "capitalCity": "Porto-Novo",
+    "lat": 6.4779,
+    "lng": 2.6323
+  },
+  "BFA": {
+    "name": "Burkina Faso",
+    "iso2": "BF",
+    "capitalCity": "Ouagadougou",
+    "lat": 12.3605,
+    "lng": -1.53395
+  },
+  "BGD": {
+    "name": "Bangladesh",
+    "iso2": "BD",
+    "capitalCity": "Dhaka",
+    "lat": 23.7055,
+    "lng": 90.4113
+  },
+  "BGR": {
+    "name": "Bulgaria",
+    "iso2": "BG",
+    "capitalCity": "Sofia",
+    "lat": 42.7105,
+    "lng": 23.3238
+  },
+  "BHI": {
+    "name": "IBRD countries classified as high income",
+    "iso2": "B1",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BHR": {
+    "name": "Bahrain",
+    "iso2": "BH",
+    "capitalCity": "Manama",
+    "lat": 26.1921,
+    "lng": 50.5354
+  },
+  "BHS": {
+    "name": "Bahamas, The",
+    "iso2": "BS",
+    "capitalCity": "Nassau",
+    "lat": 25.0661,
+    "lng": -77.339
+  },
+  "BIH": {
+    "name": "Bosnia and Herzegovina",
+    "iso2": "BA",
+    "capitalCity": "Sarajevo",
+    "lat": 43.8607,
+    "lng": 18.4214
+  },
+  "BLA": {
+    "name": "Latin America & the Caribbean (IBRD-only countries)",
+    "iso2": "B2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BLR": {
+    "name": "Belarus",
+    "iso2": "BY",
+    "capitalCity": "Minsk",
+    "lat": 53.9678,
+    "lng": 27.5766
+  },
+  "BLZ": {
+    "name": "Belize",
+    "iso2": "BZ",
+    "capitalCity": "Belmopan",
+    "lat": 17.2534,
+    "lng": -88.7713
+  },
+  "BMN": {
+    "name": "Middle East, North Africa, Afghanistan & Pakistan (IBRD only)",
+    "iso2": "B3",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BMU": {
+    "name": "Bermuda",
+    "iso2": "BM",
+    "capitalCity": "Hamilton",
+    "lat": 32.3293,
+    "lng": -64.706
+  },
+  "BOL": {
+    "name": "Bolivia",
+    "iso2": "BO",
+    "capitalCity": "La Paz",
+    "lat": -13.9908,
+    "lng": -66.1936
+  },
+  "BRA": {
+    "name": "Brazil",
+    "iso2": "BR",
+    "capitalCity": "Brasilia",
+    "lat": -15.7801,
+    "lng": -47.9292
+  },
+  "BRB": {
+    "name": "Barbados",
+    "iso2": "BB",
+    "capitalCity": "Bridgetown",
+    "lat": 13.0935,
+    "lng": -59.6105
+  },
+  "BRN": {
+    "name": "Brunei Darussalam",
+    "iso2": "BN",
+    "capitalCity": "Bandar Seri Begawan",
+    "lat": 4.94199,
+    "lng": 114.946
+  },
+  "BSS": {
+    "name": "Sub-Saharan Africa (IBRD-only countries)",
+    "iso2": "B6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "BTN": {
+    "name": "Bhutan",
+    "iso2": "BT",
+    "capitalCity": "Thimphu",
+    "lat": 27.5768,
+    "lng": 89.6177
+  },
+  "BWA": {
+    "name": "Botswana",
+    "iso2": "BW",
+    "capitalCity": "Gaborone",
+    "lat": -24.6544,
+    "lng": 25.9201
+  },
+  "CAA": {
+    "name": "Sub-Saharan Africa (IFC classification)",
+    "iso2": "C9",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CAF": {
+    "name": "Central African Republic",
+    "iso2": "CF",
+    "capitalCity": "Bangui",
+    "lat": 5.63056,
+    "lng": 21.6407
+  },
+  "CAN": {
+    "name": "Canada",
+    "iso2": "CA",
+    "capitalCity": "Ottawa",
+    "lat": 45.4215,
+    "lng": -75.6919
+  },
+  "CEA": {
+    "name": "East Asia and the Pacific (IFC classification)",
+    "iso2": "C4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CEB": {
+    "name": "Central Europe and the Baltics",
+    "iso2": "B8",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CEU": {
+    "name": "Europe and Central Asia (IFC classification)",
+    "iso2": "C5",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CHE": {
+    "name": "Switzerland",
+    "iso2": "CH",
+    "capitalCity": "Bern",
+    "lat": 46.948,
+    "lng": 7.44821
+  },
+  "CHI": {
+    "name": "Channel Islands",
+    "iso2": "JG",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CHL": {
+    "name": "Chile",
+    "iso2": "CL",
+    "capitalCity": "Santiago",
+    "lat": -33.475,
+    "lng": -70.6475
+  },
+  "CHN": {
+    "name": "China",
+    "iso2": "CN",
+    "capitalCity": "Beijing",
+    "lat": 40.0495,
+    "lng": 116.286
+  },
+  "CIV": {
+    "name": "Cote d'Ivoire",
+    "iso2": "CI",
+    "capitalCity": "Yamoussoukro",
+    "lat": 5.332,
+    "lng": -4.0305
+  },
+  "CLA": {
+    "name": "Latin America and the Caribbean (IFC classification)",
+    "iso2": "C6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CME": {
+    "name": "Middle East and North Africa (IFC classification)",
+    "iso2": "C7",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CMR": {
+    "name": "Cameroon",
+    "iso2": "CM",
+    "capitalCity": "Yaounde",
+    "lat": 3.8721,
+    "lng": 11.5174
+  },
+  "COD": {
+    "name": "Congo, Dem. Rep.",
+    "iso2": "CD",
+    "capitalCity": "Kinshasa",
+    "lat": -4.325,
+    "lng": 15.3222
+  },
+  "COG": {
+    "name": "Congo, Rep.",
+    "iso2": "CG",
+    "capitalCity": "Brazzaville",
+    "lat": -4.2767,
+    "lng": 15.2662
+  },
+  "COL": {
+    "name": "Colombia",
+    "iso2": "CO",
+    "capitalCity": "Bogota",
+    "lat": 4.60987,
+    "lng": -74.082
+  },
+  "COM": {
+    "name": "Comoros",
+    "iso2": "KM",
+    "capitalCity": "Moroni",
+    "lat": -11.6986,
+    "lng": 43.2418
+  },
+  "CPV": {
+    "name": "Cabo Verde",
+    "iso2": "CV",
+    "capitalCity": "Praia",
+    "lat": 14.9218,
+    "lng": -23.5087
+  },
+  "CRI": {
+    "name": "Costa Rica",
+    "iso2": "CR",
+    "capitalCity": "San Jose",
+    "lat": 9.63701,
+    "lng": -84.0089
+  },
+  "CSA": {
+    "name": "South Asia (IFC classification)",
+    "iso2": "C8",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CSS": {
+    "name": "Caribbean small states",
+    "iso2": "S3",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "CUB": {
+    "name": "Cuba",
+    "iso2": "CU",
+    "capitalCity": "Havana",
+    "lat": 23.1333,
+    "lng": -82.3667
+  },
+  "CUW": {
+    "name": "Curacao",
+    "iso2": "CW",
+    "capitalCity": "Willemstad",
+    "lat": 0,
+    "lng": 0
+  },
+  "CYM": {
+    "name": "Cayman Islands",
+    "iso2": "KY",
+    "capitalCity": "George Town",
+    "lat": 19.3022,
+    "lng": -81.3857
+  },
+  "CYP": {
+    "name": "Cyprus",
+    "iso2": "CY",
+    "capitalCity": "Nicosia",
+    "lat": 35.1676,
+    "lng": 33.3736
+  },
+  "CZE": {
+    "name": "Czechia",
+    "iso2": "CZ",
+    "capitalCity": "Prague",
+    "lat": 50.0878,
+    "lng": 14.4205
+  },
+  "DEA": {
+    "name": "East Asia & Pacific (IDA-eligible countries)",
+    "iso2": "D4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DEC": {
+    "name": "Europe & Central Asia (IDA-eligible countries)",
+    "iso2": "D7",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DEU": {
+    "name": "Germany",
+    "iso2": "DE",
+    "capitalCity": "Berlin",
+    "lat": 52.5235,
+    "lng": 13.4115
+  },
+  "DJI": {
+    "name": "Djibouti",
+    "iso2": "DJ",
+    "capitalCity": "Djibouti",
+    "lat": 11.5806,
+    "lng": 43.1425
+  },
+  "DLA": {
+    "name": "Latin America & the Caribbean (IDA-eligible countries)",
+    "iso2": "D2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DMA": {
+    "name": "Dominica",
+    "iso2": "DM",
+    "capitalCity": "Roseau",
+    "lat": 15.2976,
+    "lng": -61.39
+  },
+  "DMN": {
+    "name": "Middle East, North Africa, Afghanistan & Pakistan (IDA total)",
+    "iso2": "D3",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DNK": {
+    "name": "Denmark",
+    "iso2": "DK",
+    "capitalCity": "Copenhagen",
+    "lat": 55.6763,
+    "lng": 12.5681
+  },
+  "DNS": {
+    "name": "IDA countries in Sub-Saharan Africa not classified as fragile situations ",
+    "iso2": "N6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DOM": {
+    "name": "Dominican Republic",
+    "iso2": "DO",
+    "capitalCity": "Santo Domingo",
+    "lat": 18.479,
+    "lng": -69.8908
+  },
+  "DSA": {
+    "name": "South Asia (IDA-eligible countries)",
+    "iso2": "D5",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DSF": {
+    "name": "IDA countries in Sub-Saharan Africa classified as fragile situations ",
+    "iso2": "F6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DSS": {
+    "name": "Sub-Saharan Africa (IDA-eligible countries)",
+    "iso2": "D6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "DZA": {
+    "name": "Algeria",
+    "iso2": "DZ",
+    "capitalCity": "Algiers",
+    "lat": 36.7397,
+    "lng": 3.05097
+  },
+  "EAP": {
+    "name": "East Asia & Pacific (excluding high income)",
+    "iso2": "4E",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "EAR": {
+    "name": "Early-demographic dividend",
+    "iso2": "V2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "EAS": {
+    "name": "East Asia & Pacific",
+    "iso2": "Z4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "ECA": {
+    "name": "Europe & Central Asia (excluding high income)",
+    "iso2": "7E",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "ECS": {
+    "name": "Europe & Central Asia",
+    "iso2": "Z7",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "ECU": {
+    "name": "Ecuador",
+    "iso2": "EC",
+    "capitalCity": "Quito",
+    "lat": -0.229498,
+    "lng": -78.5243
+  },
+  "EGY": {
+    "name": "Egypt, Arab Rep.",
+    "iso2": "EG",
+    "capitalCity": "Cairo",
+    "lat": 30.0982,
+    "lng": 31.2461
+  },
+  "EMU": {
+    "name": "Euro area",
+    "iso2": "XC",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "ERI": {
+    "name": "Eritrea",
+    "iso2": "ER",
+    "capitalCity": "Asmara",
+    "lat": 15.3315,
+    "lng": 38.9183
+  },
+  "ESP": {
+    "name": "Spain",
+    "iso2": "ES",
+    "capitalCity": "Madrid",
+    "lat": 40.4167,
+    "lng": -3.70327
+  },
+  "EST": {
+    "name": "Estonia",
+    "iso2": "EE",
+    "capitalCity": "Tallinn",
+    "lat": 59.4392,
+    "lng": 24.7586
+  },
+  "ETH": {
+    "name": "Ethiopia",
+    "iso2": "ET",
+    "capitalCity": "Addis Ababa",
+    "lat": 9.02274,
+    "lng": 38.7468
+  },
+  "EUU": {
+    "name": "European Union",
+    "iso2": "EU",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "FCS": {
+    "name": "Fragile and conflict affected situations",
+    "iso2": "F1",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "FIN": {
+    "name": "Finland",
+    "iso2": "FI",
+    "capitalCity": "Helsinki",
+    "lat": 60.1608,
+    "lng": 24.9525
+  },
+  "FJI": {
+    "name": "Fiji",
+    "iso2": "FJ",
+    "capitalCity": "Suva",
+    "lat": -18.1149,
+    "lng": 178.399
+  },
+  "FRA": {
+    "name": "France",
+    "iso2": "FR",
+    "capitalCity": "Paris",
+    "lat": 48.8566,
+    "lng": 2.35097
+  },
+  "FRO": {
+    "name": "Faroe Islands",
+    "iso2": "FO",
+    "capitalCity": "Torshavn",
+    "lat": 61.8926,
+    "lng": -6.91181
+  },
+  "FSM": {
+    "name": "Micronesia, Fed. Sts.",
+    "iso2": "FM",
+    "capitalCity": "Palikir",
+    "lat": 6.91771,
+    "lng": 158.185
+  },
+  "FXS": {
+    "name": "IDA countries classified as fragile situations, excluding Sub-Saharan Africa",
+    "iso2": "6F",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "GAB": {
+    "name": "Gabon",
+    "iso2": "GA",
+    "capitalCity": "Libreville",
+    "lat": 0.38832,
+    "lng": 9.45162
+  },
+  "GBR": {
+    "name": "United Kingdom",
+    "iso2": "GB",
+    "capitalCity": "London",
+    "lat": 51.5002,
+    "lng": -0.126236
+  },
+  "GEO": {
+    "name": "Georgia",
+    "iso2": "GE",
+    "capitalCity": "Tbilisi",
+    "lat": 41.71,
+    "lng": 44.793
+  },
+  "GHA": {
+    "name": "Ghana",
+    "iso2": "GH",
+    "capitalCity": "Accra",
+    "lat": 5.57045,
+    "lng": -0.20795
+  },
+  "GIB": {
+    "name": "Gibraltar",
+    "iso2": "GI",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "GIN": {
+    "name": "Guinea",
+    "iso2": "GN",
+    "capitalCity": "Conakry",
+    "lat": 9.51667,
+    "lng": -13.7
+  },
+  "GMB": {
+    "name": "Gambia, The",
+    "iso2": "GM",
+    "capitalCity": "Banjul",
+    "lat": 13.4495,
+    "lng": -16.5885
+  },
+  "GNB": {
+    "name": "Guinea-Bissau",
+    "iso2": "GW",
+    "capitalCity": "Bissau",
+    "lat": 11.8037,
+    "lng": -15.1804
+  },
+  "GNQ": {
+    "name": "Equatorial Guinea",
+    "iso2": "GQ",
+    "capitalCity": "Malabo",
+    "lat": 3.7523,
+    "lng": 8.7741
+  },
+  "GRC": {
+    "name": "Greece",
+    "iso2": "GR",
+    "capitalCity": "Athens",
+    "lat": 37.9792,
+    "lng": 23.7166
+  },
+  "GRD": {
+    "name": "Grenada",
+    "iso2": "GD",
+    "capitalCity": "Saint George's",
+    "lat": 12.0653,
+    "lng": -61.7449
+  },
+  "GRL": {
+    "name": "Greenland",
+    "iso2": "GL",
+    "capitalCity": "Nuuk",
+    "lat": 64.1836,
+    "lng": -51.7214
+  },
+  "GTM": {
+    "name": "Guatemala",
+    "iso2": "GT",
+    "capitalCity": "Guatemala City",
+    "lat": 14.6248,
+    "lng": -90.5328
+  },
+  "GUM": {
+    "name": "Guam",
+    "iso2": "GU",
+    "capitalCity": "Agana",
+    "lat": 13.4443,
+    "lng": 144.794
+  },
+  "GUY": {
+    "name": "Guyana",
+    "iso2": "GY",
+    "capitalCity": "Georgetown",
+    "lat": 6.80461,
+    "lng": -58.1548
+  },
+  "HIC": {
+    "name": "High income",
+    "iso2": "XD",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "HKG": {
+    "name": "Hong Kong SAR, China",
+    "iso2": "HK",
+    "capitalCity": "",
+    "lat": 22.3964,
+    "lng": 114.109
+  },
+  "HND": {
+    "name": "Honduras",
+    "iso2": "HN",
+    "capitalCity": "Tegucigalpa",
+    "lat": 15.1333,
+    "lng": -87.4667
+  },
+  "HPC": {
+    "name": "Heavily indebted poor countries (HIPC)",
+    "iso2": "XE",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "HRV": {
+    "name": "Croatia",
+    "iso2": "HR",
+    "capitalCity": "Zagreb",
+    "lat": 45.8069,
+    "lng": 15.9614
+  },
+  "HTI": {
+    "name": "Haiti",
+    "iso2": "HT",
+    "capitalCity": "Port-au-Prince",
+    "lat": 18.5392,
+    "lng": -72.3288
+  },
+  "HUN": {
+    "name": "Hungary",
+    "iso2": "HU",
+    "capitalCity": "Budapest",
+    "lat": 47.4984,
+    "lng": 19.0408
+  },
+  "IBB": {
+    "name": "IBRD, including blend",
+    "iso2": "ZB",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IBD": {
+    "name": "IBRD only",
+    "iso2": "XF",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IBT": {
+    "name": "IDA & IBRD total",
+    "iso2": "ZT",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IDA": {
+    "name": "IDA total",
+    "iso2": "XG",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IDB": {
+    "name": "IDA blend",
+    "iso2": "XH",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IDN": {
+    "name": "Indonesia",
+    "iso2": "ID",
+    "capitalCity": "Jakarta",
+    "lat": -6.19752,
+    "lng": 106.83
+  },
+  "IDX": {
+    "name": "IDA only",
+    "iso2": "XI",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IMN": {
+    "name": "Isle of Man",
+    "iso2": "IM",
+    "capitalCity": "Douglas",
+    "lat": 54.1509,
+    "lng": -4.47928
+  },
+  "IND": {
+    "name": "India",
+    "iso2": "IN",
+    "capitalCity": "New Delhi",
+    "lat": 28.6353,
+    "lng": 77.225
+  },
+  "INX": {
+    "name": "Not classified",
+    "iso2": "XY",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "IRL": {
+    "name": "Ireland",
+    "iso2": "IE",
+    "capitalCity": "Dublin",
+    "lat": 53.3441,
+    "lng": -6.26749
+  },
+  "IRN": {
+    "name": "Iran, Islamic Rep.",
+    "iso2": "IR",
+    "capitalCity": "Tehran",
+    "lat": 35.6878,
+    "lng": 51.4447
+  },
+  "IRQ": {
+    "name": "Iraq",
+    "iso2": "IQ",
+    "capitalCity": "Baghdad",
+    "lat": 33.3302,
+    "lng": 44.394
+  },
+  "ISL": {
+    "name": "Iceland",
+    "iso2": "IS",
+    "capitalCity": "Reykjavik",
+    "lat": 64.1353,
+    "lng": -21.8952
+  },
+  "ISR": {
+    "name": "Israel",
+    "iso2": "IL",
+    "capitalCity": "",
+    "lat": 31.7717,
+    "lng": 35.2035
+  },
+  "ITA": {
+    "name": "Italy",
+    "iso2": "IT",
+    "capitalCity": "Rome",
+    "lat": 41.8955,
+    "lng": 12.4823
+  },
+  "JAM": {
+    "name": "Jamaica",
+    "iso2": "JM",
+    "capitalCity": "Kingston",
+    "lat": 17.9927,
+    "lng": -76.792
+  },
+  "JOR": {
+    "name": "Jordan",
+    "iso2": "JO",
+    "capitalCity": "Amman",
+    "lat": 31.9497,
+    "lng": 35.9263
+  },
+  "JPN": {
+    "name": "Japan",
+    "iso2": "JP",
+    "capitalCity": "Tokyo",
+    "lat": 35.67,
+    "lng": 139.77
+  },
+  "KAZ": {
+    "name": "Kazakhstan",
+    "iso2": "KZ",
+    "capitalCity": "Astana",
+    "lat": 51.1879,
+    "lng": 71.4382
+  },
+  "KEN": {
+    "name": "Kenya",
+    "iso2": "KE",
+    "capitalCity": "Nairobi",
+    "lat": -1.27975,
+    "lng": 36.8126
+  },
+  "KGZ": {
+    "name": "Kyrgyz Republic",
+    "iso2": "KG",
+    "capitalCity": "Bishkek",
+    "lat": 42.8851,
+    "lng": 74.6057
+  },
+  "KHM": {
+    "name": "Cambodia",
+    "iso2": "KH",
+    "capitalCity": "Phnom Penh",
+    "lat": 11.5556,
+    "lng": 104.874
+  },
+  "KIR": {
+    "name": "Kiribati",
+    "iso2": "KI",
+    "capitalCity": "Tarawa",
+    "lat": 1.32905,
+    "lng": 172.979
+  },
+  "KNA": {
+    "name": "St. Kitts and Nevis",
+    "iso2": "KN",
+    "capitalCity": "Basseterre",
+    "lat": 17.3,
+    "lng": -62.7309
+  },
+  "KOR": {
+    "name": "Korea, Rep.",
+    "iso2": "KR",
+    "capitalCity": "Seoul",
+    "lat": 37.5323,
+    "lng": 126.957
+  },
+  "KWT": {
+    "name": "Kuwait",
+    "iso2": "KW",
+    "capitalCity": "Kuwait City",
+    "lat": 29.3721,
+    "lng": 47.9824
+  },
+  "LAC": {
+    "name": "Latin America & Caribbean (excluding high income)",
+    "iso2": "XJ",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LAO": {
+    "name": "Lao PDR",
+    "iso2": "LA",
+    "capitalCity": "Vientiane",
+    "lat": 18.5826,
+    "lng": 102.177
+  },
+  "LBN": {
+    "name": "Lebanon",
+    "iso2": "LB",
+    "capitalCity": "Beirut",
+    "lat": 33.8872,
+    "lng": 35.5134
+  },
+  "LBR": {
+    "name": "Liberia",
+    "iso2": "LR",
+    "capitalCity": "Monrovia",
+    "lat": 6.30039,
+    "lng": -10.7957
+  },
+  "LBY": {
+    "name": "Libya",
+    "iso2": "LY",
+    "capitalCity": "Tripoli",
+    "lat": 32.8578,
+    "lng": 13.1072
+  },
+  "LCA": {
+    "name": "St. Lucia",
+    "iso2": "LC",
+    "capitalCity": "Castries",
+    "lat": 14,
+    "lng": -60.9832
+  },
+  "LCN": {
+    "name": "Latin America & Caribbean ",
+    "iso2": "ZJ",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LDC": {
+    "name": "Least developed countries: UN classification",
+    "iso2": "XL",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LIC": {
+    "name": "Low income",
+    "iso2": "XM",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LIE": {
+    "name": "Liechtenstein",
+    "iso2": "LI",
+    "capitalCity": "Vaduz",
+    "lat": 47.1411,
+    "lng": 9.52148
+  },
+  "LKA": {
+    "name": "Sri Lanka",
+    "iso2": "LK",
+    "capitalCity": "Colombo",
+    "lat": 6.92148,
+    "lng": 79.8528
+  },
+  "LMC": {
+    "name": "Lower middle income",
+    "iso2": "XN",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LMY": {
+    "name": "Low & middle income",
+    "iso2": "XO",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LSO": {
+    "name": "Lesotho",
+    "iso2": "LS",
+    "capitalCity": "Maseru",
+    "lat": -29.5208,
+    "lng": 27.7167
+  },
+  "LTE": {
+    "name": "Late-demographic dividend",
+    "iso2": "V3",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "LTU": {
+    "name": "Lithuania",
+    "iso2": "LT",
+    "capitalCity": "Vilnius",
+    "lat": 54.6896,
+    "lng": 25.2799
+  },
+  "LUX": {
+    "name": "Luxembourg",
+    "iso2": "LU",
+    "capitalCity": "Luxembourg",
+    "lat": 49.61,
+    "lng": 6.1296
+  },
+  "LVA": {
+    "name": "Latvia",
+    "iso2": "LV",
+    "capitalCity": "Riga",
+    "lat": 56.9465,
+    "lng": 24.1048
+  },
+  "MAC": {
+    "name": "Macao SAR, China",
+    "iso2": "MO",
+    "capitalCity": "",
+    "lat": 22.1667,
+    "lng": 113.55
+  },
+  "MAF": {
+    "name": "St. Martin (French part)",
+    "iso2": "MF",
+    "capitalCity": "Marigot",
+    "lat": 0,
+    "lng": 0
+  },
+  "MAR": {
+    "name": "Morocco",
+    "iso2": "MA",
+    "capitalCity": "Rabat",
+    "lat": 33.9905,
+    "lng": -6.8704
+  },
+  "MCO": {
+    "name": "Monaco",
+    "iso2": "MC",
+    "capitalCity": "Monaco",
+    "lat": 43.7325,
+    "lng": 7.41891
+  },
+  "MDA": {
+    "name": "Moldova",
+    "iso2": "MD",
+    "capitalCity": "Chisinau",
+    "lat": 47.0167,
+    "lng": 28.8497
+  },
+  "MDE": {
+    "name": "Middle East (developing only)",
+    "iso2": "M1",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "MDG": {
+    "name": "Madagascar",
+    "iso2": "MG",
+    "capitalCity": "Antananarivo",
+    "lat": -20.4667,
+    "lng": 45.7167
+  },
+  "MDV": {
+    "name": "Maldives",
+    "iso2": "MV",
+    "capitalCity": "Male",
+    "lat": 4.1742,
+    "lng": 73.5109
+  },
+  "MEA": {
+    "name": "Middle East, North Africa, Afghanistan & Pakistan",
+    "iso2": "ZQ",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "MEX": {
+    "name": "Mexico",
+    "iso2": "MX",
+    "capitalCity": "Mexico City",
+    "lat": 19.427,
+    "lng": -99.1276
+  },
+  "MHL": {
+    "name": "Marshall Islands",
+    "iso2": "MH",
+    "capitalCity": "Majuro",
+    "lat": 7.11046,
+    "lng": 171.135
+  },
+  "MIC": {
+    "name": "Middle income",
+    "iso2": "XP",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "MKD": {
+    "name": "North Macedonia",
+    "iso2": "MK",
+    "capitalCity": "Skopje",
+    "lat": 42.0024,
+    "lng": 21.4361
+  },
+  "MLI": {
+    "name": "Mali",
+    "iso2": "ML",
+    "capitalCity": "Bamako",
+    "lat": 13.5667,
+    "lng": -7.50034
+  },
+  "MLT": {
+    "name": "Malta",
+    "iso2": "MT",
+    "capitalCity": "Valletta",
+    "lat": 35.9042,
+    "lng": 14.5189
+  },
+  "MMR": {
+    "name": "Myanmar",
+    "iso2": "MM",
+    "capitalCity": "Naypyidaw",
+    "lat": 21.914,
+    "lng": 95.9562
+  },
+  "MNA": {
+    "name": "Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",
+    "iso2": "XQ",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "MNE": {
+    "name": "Montenegro",
+    "iso2": "ME",
+    "capitalCity": "Podgorica",
+    "lat": 42.4602,
+    "lng": 19.2595
+  },
+  "MNG": {
+    "name": "Mongolia",
+    "iso2": "MN",
+    "capitalCity": "Ulaanbaatar",
+    "lat": 47.9129,
+    "lng": 106.937
+  },
+  "MNP": {
+    "name": "Northern Mariana Islands",
+    "iso2": "MP",
+    "capitalCity": "Saipan",
+    "lat": 15.1935,
+    "lng": 145.765
+  },
+  "MOZ": {
+    "name": "Mozambique",
+    "iso2": "MZ",
+    "capitalCity": "Maputo",
+    "lat": -25.9664,
+    "lng": 32.5713
+  },
+  "MRT": {
+    "name": "Mauritania",
+    "iso2": "MR",
+    "capitalCity": "Nouakchott",
+    "lat": 18.2367,
+    "lng": -15.9824
+  },
+  "MUS": {
+    "name": "Mauritius",
+    "iso2": "MU",
+    "capitalCity": "Port Louis",
+    "lat": -20.1605,
+    "lng": 57.4977
+  },
+  "MWI": {
+    "name": "Malawi",
+    "iso2": "MW",
+    "capitalCity": "Lilongwe",
+    "lat": -13.9899,
+    "lng": 33.7703
+  },
+  "MYS": {
+    "name": "Malaysia",
+    "iso2": "MY",
+    "capitalCity": "Kuala Lumpur",
+    "lat": 3.12433,
+    "lng": 101.684
+  },
+  "NAC": {
+    "name": "North America",
+    "iso2": "XU",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "NAF": {
+    "name": "North Africa",
+    "iso2": "M2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "NAM": {
+    "name": "Namibia",
+    "iso2": "NA",
+    "capitalCity": "Windhoek",
+    "lat": -22.5648,
+    "lng": 17.0931
+  },
+  "NCL": {
+    "name": "New Caledonia",
+    "iso2": "NC",
+    "capitalCity": "Noum'ea",
+    "lat": -22.2677,
+    "lng": 166.464
+  },
+  "NER": {
+    "name": "Niger",
+    "iso2": "NE",
+    "capitalCity": "Niamey",
+    "lat": 13.514,
+    "lng": 2.1073
+  },
+  "NGA": {
+    "name": "Nigeria",
+    "iso2": "NG",
+    "capitalCity": "Abuja",
+    "lat": 9.05804,
+    "lng": 7.48906
+  },
+  "NIC": {
+    "name": "Nicaragua",
+    "iso2": "NI",
+    "capitalCity": "Managua",
+    "lat": 12.1475,
+    "lng": -86.2734
+  },
+  "NLD": {
+    "name": "Netherlands",
+    "iso2": "NL",
+    "capitalCity": "Amsterdam",
+    "lat": 52.3738,
+    "lng": 4.89095
+  },
+  "NOR": {
+    "name": "Norway",
+    "iso2": "NO",
+    "capitalCity": "Oslo",
+    "lat": 59.9138,
+    "lng": 10.7387
+  },
+  "NPL": {
+    "name": "Nepal",
+    "iso2": "NP",
+    "capitalCity": "Kathmandu",
+    "lat": 27.6939,
+    "lng": 85.3157
+  },
+  "NRS": {
+    "name": "Non-resource rich Sub-Saharan Africa countries",
+    "iso2": "6X",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "NRU": {
+    "name": "Nauru",
+    "iso2": "NR",
+    "capitalCity": "Yaren District",
+    "lat": -0.5477,
+    "lng": 166.920867
+  },
+  "NXS": {
+    "name": "IDA countries not classified as fragile situations, excluding Sub-Saharan Africa",
+    "iso2": "6N",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "NZL": {
+    "name": "New Zealand",
+    "iso2": "NZ",
+    "capitalCity": "Wellington",
+    "lat": -41.2865,
+    "lng": 174.776
+  },
+  "OED": {
+    "name": "OECD members",
+    "iso2": "OE",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "OMN": {
+    "name": "Oman",
+    "iso2": "OM",
+    "capitalCity": "Muscat",
+    "lat": 23.6105,
+    "lng": 58.5874
+  },
+  "OSS": {
+    "name": "Other small states",
+    "iso2": "S4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "PAK": {
+    "name": "Pakistan",
+    "iso2": "PK",
+    "capitalCity": "Islamabad",
+    "lat": 30.5167,
+    "lng": 72.8
+  },
+  "PAN": {
+    "name": "Panama",
+    "iso2": "PA",
+    "capitalCity": "Panama City",
+    "lat": 8.99427,
+    "lng": -79.5188
+  },
+  "PER": {
+    "name": "Peru",
+    "iso2": "PE",
+    "capitalCity": "Lima",
+    "lat": -12.0931,
+    "lng": -77.0465
+  },
+  "PHL": {
+    "name": "Philippines",
+    "iso2": "PH",
+    "capitalCity": "Manila",
+    "lat": 14.5515,
+    "lng": 121.035
+  },
+  "PLW": {
+    "name": "Palau",
+    "iso2": "PW",
+    "capitalCity": "Koror",
+    "lat": 7.34194,
+    "lng": 134.479
+  },
+  "PNG": {
+    "name": "Papua New Guinea",
+    "iso2": "PG",
+    "capitalCity": "Port Moresby",
+    "lat": -9.47357,
+    "lng": 147.194
+  },
+  "POL": {
+    "name": "Poland",
+    "iso2": "PL",
+    "capitalCity": "Warsaw",
+    "lat": 52.26,
+    "lng": 21.02
+  },
+  "PRE": {
+    "name": "Pre-demographic dividend",
+    "iso2": "V1",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "PRI": {
+    "name": "Puerto Rico (US)",
+    "iso2": "PR",
+    "capitalCity": "San Juan",
+    "lat": 18.23,
+    "lng": -66
+  },
+  "PRK": {
+    "name": "Korea, Dem. People's Rep.",
+    "iso2": "KP",
+    "capitalCity": "Pyongyang",
+    "lat": 39.0319,
+    "lng": 125.754
+  },
+  "PRT": {
+    "name": "Portugal",
+    "iso2": "PT",
+    "capitalCity": "Lisbon",
+    "lat": 38.7072,
+    "lng": -9.13552
+  },
+  "PRY": {
+    "name": "Paraguay",
+    "iso2": "PY",
+    "capitalCity": "Asuncion",
+    "lat": -25.3005,
+    "lng": -57.6362
+  },
+  "PSE": {
+    "name": "West Bank and Gaza",
+    "iso2": "PS",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "PSS": {
+    "name": "Pacific island small states",
+    "iso2": "S2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "PST": {
+    "name": "Post-demographic dividend",
+    "iso2": "V4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "PYF": {
+    "name": "French Polynesia",
+    "iso2": "PF",
+    "capitalCity": "Papeete",
+    "lat": -17.535,
+    "lng": -149.57
+  },
+  "QAT": {
+    "name": "Qatar",
+    "iso2": "QA",
+    "capitalCity": "Doha",
+    "lat": 25.2948,
+    "lng": 51.5082
+  },
+  "ROU": {
+    "name": "Romania",
+    "iso2": "RO",
+    "capitalCity": "Bucharest",
+    "lat": 44.4479,
+    "lng": 26.0979
+  },
+  "RRS": {
+    "name": "Resource rich Sub-Saharan Africa countries",
+    "iso2": "R6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "RUS": {
+    "name": "Russian Federation",
+    "iso2": "RU",
+    "capitalCity": "Moscow",
+    "lat": 55.7558,
+    "lng": 37.6176
+  },
+  "RWA": {
+    "name": "Rwanda",
+    "iso2": "RW",
+    "capitalCity": "Kigali",
+    "lat": -1.95325,
+    "lng": 30.0587
+  },
+  "SAS": {
+    "name": "South Asia",
+    "iso2": "8S",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "SAU": {
+    "name": "Saudi Arabia",
+    "iso2": "SA",
+    "capitalCity": "Riyadh",
+    "lat": 24.6748,
+    "lng": 46.6977
+  },
+  "SDN": {
+    "name": "Sudan",
+    "iso2": "SD",
+    "capitalCity": "Khartoum",
+    "lat": 15.5932,
+    "lng": 32.5363
+  },
+  "SEN": {
+    "name": "Senegal",
+    "iso2": "SN",
+    "capitalCity": "Dakar",
+    "lat": 14.7247,
+    "lng": -17.4734
+  },
+  "SGP": {
+    "name": "Singapore",
+    "iso2": "SG",
+    "capitalCity": "Singapore",
+    "lat": 1.28941,
+    "lng": 103.85
+  },
+  "SLB": {
+    "name": "Solomon Islands",
+    "iso2": "SB",
+    "capitalCity": "Honiara",
+    "lat": -9.42676,
+    "lng": 159.949
+  },
+  "SLE": {
+    "name": "Sierra Leone",
+    "iso2": "SL",
+    "capitalCity": "Freetown",
+    "lat": 8.4821,
+    "lng": -13.2134
+  },
+  "SLV": {
+    "name": "El Salvador",
+    "iso2": "SV",
+    "capitalCity": "San Salvador",
+    "lat": 13.7034,
+    "lng": -89.2073
+  },
+  "SMR": {
+    "name": "San Marino",
+    "iso2": "SM",
+    "capitalCity": "San Marino",
+    "lat": 43.9322,
+    "lng": 12.4486
+  },
+  "SOM": {
+    "name": "Somalia, Fed. Rep.",
+    "iso2": "SO",
+    "capitalCity": "Mogadishu",
+    "lat": 2.07515,
+    "lng": 45.3254
+  },
+  "SRB": {
+    "name": "Serbia",
+    "iso2": "RS",
+    "capitalCity": "Belgrade",
+    "lat": 44.8024,
+    "lng": 20.4656
+  },
+  "SSA": {
+    "name": "Sub-Saharan Africa (excluding high income)",
+    "iso2": "ZF",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "SSD": {
+    "name": "South Sudan",
+    "iso2": "SS",
+    "capitalCity": "Juba",
+    "lat": 4.85,
+    "lng": 31.6
+  },
+  "SSF": {
+    "name": "Sub-Saharan Africa ",
+    "iso2": "ZG",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "SST": {
+    "name": "Small states",
+    "iso2": "S1",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "STP": {
+    "name": "Sao Tome and Principe",
+    "iso2": "ST",
+    "capitalCity": "Sao Tome",
+    "lat": 0.20618,
+    "lng": 6.6071
+  },
+  "SUR": {
+    "name": "Suriname",
+    "iso2": "SR",
+    "capitalCity": "Paramaribo",
+    "lat": 5.8232,
+    "lng": -55.1679
+  },
+  "SVK": {
+    "name": "Slovak Republic",
+    "iso2": "SK",
+    "capitalCity": "Bratislava",
+    "lat": 48.1484,
+    "lng": 17.1073
+  },
+  "SVN": {
+    "name": "Slovenia",
+    "iso2": "SI",
+    "capitalCity": "Ljubljana",
+    "lat": 46.0546,
+    "lng": 14.5044
+  },
+  "SWE": {
+    "name": "Sweden",
+    "iso2": "SE",
+    "capitalCity": "Stockholm",
+    "lat": 59.3327,
+    "lng": 18.0645
+  },
+  "SWZ": {
+    "name": "Eswatini",
+    "iso2": "SZ",
+    "capitalCity": "Mbabane",
+    "lat": -26.5225,
+    "lng": 31.4659
+  },
+  "SXM": {
+    "name": "Sint Maarten (Dutch part)",
+    "iso2": "SX",
+    "capitalCity": "Philipsburg",
+    "lat": 0,
+    "lng": 0
+  },
+  "SXZ": {
+    "name": "Sub-Saharan Africa excluding South Africa",
+    "iso2": "A4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "SYC": {
+    "name": "Seychelles",
+    "iso2": "SC",
+    "capitalCity": "Victoria",
+    "lat": -4.6309,
+    "lng": 55.4466
+  },
+  "SYR": {
+    "name": "Syrian Arab Republic",
+    "iso2": "SY",
+    "capitalCity": "Damascus",
+    "lat": 33.5146,
+    "lng": 36.3119
+  },
+  "TCA": {
+    "name": "Turks and Caicos Islands",
+    "iso2": "TC",
+    "capitalCity": "Grand Turk",
+    "lat": 21.4602778,
+    "lng": -71.141389
+  },
+  "TCD": {
+    "name": "Chad",
+    "iso2": "TD",
+    "capitalCity": "N'Djamena",
+    "lat": 12.1048,
+    "lng": 15.0445
+  },
+  "TEA": {
+    "name": "East Asia & Pacific (IDA & IBRD countries)",
+    "iso2": "T4",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TEC": {
+    "name": "Europe & Central Asia (IDA & IBRD countries)",
+    "iso2": "T7",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TGO": {
+    "name": "Togo",
+    "iso2": "TG",
+    "capitalCity": "Lome",
+    "lat": 6.1228,
+    "lng": 1.2255
+  },
+  "THA": {
+    "name": "Thailand",
+    "iso2": "TH",
+    "capitalCity": "Bangkok",
+    "lat": 13.7308,
+    "lng": 100.521
+  },
+  "TJK": {
+    "name": "Tajikistan",
+    "iso2": "TJ",
+    "capitalCity": "Dushanbe",
+    "lat": 38.5878,
+    "lng": 68.7864
+  },
+  "TKM": {
+    "name": "Turkmenistan",
+    "iso2": "TM",
+    "capitalCity": "Ashgabat",
+    "lat": 37.9509,
+    "lng": 58.3794
+  },
+  "TLA": {
+    "name": "Latin America & the Caribbean (IDA & IBRD countries)",
+    "iso2": "T2",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TLS": {
+    "name": "Timor-Leste",
+    "iso2": "TL",
+    "capitalCity": "Dili",
+    "lat": -8.56667,
+    "lng": 125.567
+  },
+  "TMN": {
+    "name": "Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",
+    "iso2": "T3",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TON": {
+    "name": "Tonga",
+    "iso2": "TO",
+    "capitalCity": "Nuku'alofa",
+    "lat": -21.136,
+    "lng": -175.216
+  },
+  "TSA": {
+    "name": "South Asia (IDA & IBRD)",
+    "iso2": "T5",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TSS": {
+    "name": "Sub-Saharan Africa (IDA & IBRD countries)",
+    "iso2": "T6",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "TTO": {
+    "name": "Trinidad and Tobago",
+    "iso2": "TT",
+    "capitalCity": "Port-of-Spain",
+    "lat": 10.6596,
+    "lng": -61.4789
+  },
+  "TUN": {
+    "name": "Tunisia",
+    "iso2": "TN",
+    "capitalCity": "Tunis",
+    "lat": 36.7899,
+    "lng": 10.21
+  },
+  "TUR": {
+    "name": "Turkiye",
+    "iso2": "TR",
+    "capitalCity": "Ankara",
+    "lat": 39.7153,
+    "lng": 32.3606
+  },
+  "TUV": {
+    "name": "Tuvalu",
+    "iso2": "TV",
+    "capitalCity": "Funafuti",
+    "lat": -8.6314877,
+    "lng": 179.089567
+  },
+  "TZA": {
+    "name": "Tanzania",
+    "iso2": "TZ",
+    "capitalCity": "Dodoma",
+    "lat": -6.17486,
+    "lng": 35.7382
+  },
+  "UGA": {
+    "name": "Uganda",
+    "iso2": "UG",
+    "capitalCity": "Kampala",
+    "lat": 0.314269,
+    "lng": 32.5729
+  },
+  "UKR": {
+    "name": "Ukraine",
+    "iso2": "UA",
+    "capitalCity": "Kiev",
+    "lat": 50.4536,
+    "lng": 30.5038
+  },
+  "UMC": {
+    "name": "Upper middle income",
+    "iso2": "XT",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "URY": {
+    "name": "Uruguay",
+    "iso2": "UY",
+    "capitalCity": "Montevideo",
+    "lat": -34.8941,
+    "lng": -56.0675
+  },
+  "USA": {
+    "name": "United States",
+    "iso2": "US",
+    "capitalCity": "Washington D.C.",
+    "lat": 38.8895,
+    "lng": -77.032
+  },
+  "UZB": {
+    "name": "Uzbekistan",
+    "iso2": "UZ",
+    "capitalCity": "Tashkent",
+    "lat": 41.3052,
+    "lng": 69.269
+  },
+  "VCT": {
+    "name": "St. Vincent and the Grenadines",
+    "iso2": "VC",
+    "capitalCity": "Kingstown",
+    "lat": 13.2035,
+    "lng": -61.2653
+  },
+  "VEN": {
+    "name": "Venezuela, RB",
+    "iso2": "VE",
+    "capitalCity": "Caracas",
+    "lat": 9.08165,
+    "lng": -69.8371
+  },
+  "VGB": {
+    "name": "British Virgin Islands",
+    "iso2": "VG",
+    "capitalCity": "Road Town",
+    "lat": 18.431389,
+    "lng": -64.623056
+  },
+  "VIR": {
+    "name": "Virgin Islands (U.S.)",
+    "iso2": "VI",
+    "capitalCity": "Charlotte Amalie",
+    "lat": 18.3358,
+    "lng": -64.8963
+  },
+  "VNM": {
+    "name": "Viet Nam",
+    "iso2": "VN",
+    "capitalCity": "Hanoi",
+    "lat": 21.0069,
+    "lng": 105.825
+  },
+  "VUT": {
+    "name": "Vanuatu",
+    "iso2": "VU",
+    "capitalCity": "Port-Vila",
+    "lat": -17.7404,
+    "lng": 168.321
+  },
+  "WLD": {
+    "name": "World",
+    "iso2": "1W",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "WSM": {
+    "name": "Samoa",
+    "iso2": "WS",
+    "capitalCity": "Apia",
+    "lat": -13.8314,
+    "lng": -171.752
+  },
+  "XKX": {
+    "name": "Kosovo",
+    "iso2": "XK",
+    "capitalCity": "Pristina",
+    "lat": 42.565,
+    "lng": 20.926
+  },
+  "XZN": {
+    "name": "Sub-Saharan Africa excluding South Africa and Nigeria",
+    "iso2": "A5",
+    "capitalCity": "",
+    "lat": 0,
+    "lng": 0
+  },
+  "YEM": {
+    "name": "Yemen, Rep.",
+    "iso2": "YE",
+    "capitalCity": "Sana'a",
+    "lat": 15.352,
+    "lng": 44.2075
+  },
+  "ZAF": {
+    "name": "South Africa",
+    "iso2": "ZA",
+    "capitalCity": "Pretoria",
+    "lat": -25.746,
+    "lng": 28.1871
+  },
+  "ZMB": {
+    "name": "Zambia",
+    "iso2": "ZM",
+    "capitalCity": "Lusaka",
+    "lat": -15.3982,
+    "lng": 28.2937
+  },
+  "ZWE": {
+    "name": "Zimbabwe",
+    "iso2": "ZW",
+    "capitalCity": "Harare",
+    "lat": -17.8312,
+    "lng": 31.0672
+  }
+}
