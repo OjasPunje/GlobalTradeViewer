@@ -44,6 +44,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const [hovered, setHovered] = useState(null)
   const [isInteracting, setIsInteracting] = useState(false)
   const dragRef = useRef({ active: false, x: 0, y: 0, rotationX: 14, rotationY: -24 })
+  const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
 
   useEffect(() => {
     const stage = stageRef.current
@@ -308,7 +309,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                 >
                   <circle
                     className={`trade-country-dot ${selectedCountry?.iso === country.iso ? 'is-selected' : ''}`}
-                    r={selectedCountry?.iso === country.iso ? 7.2 : 4.4}
+                    r={selectedCountry?.iso === country.iso ? 7.2 : isTouchDevice ? 4.8 : 4.4}
                   />
                   {selectedCountry?.iso === country.iso || hovered?.countryIso === country.iso ? (
                     <text className="trade-country-label" x={10} y={-10}>

@@ -384,12 +384,15 @@
 
 .trade-country-dot {
   fill: #f5f7fa;
-  stroke: rgba(4, 7, 12, 0.88);
-  stroke-width: 1.2;
+  fill-opacity: 1;
+  stroke: rgba(4, 7, 12, 0.72);
+  stroke-width: 0.9;
 }
 
 .trade-country-dot.is-selected {
   fill: #60a5fa;
+  stroke: rgba(4, 7, 12, 0.58);
+  stroke-width: 1.1;
 }
 
 .trade-country-label {
@@ -957,7 +960,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.45rem;
-    margin-top: 0.75rem;
+    margin-top: 0.65rem;
+  }
+
+  .mobile-trade-summary {
+    margin: 0.7rem 0 0;
+    color: #9aa6b8;
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .mobile-panel,
@@ -1053,6 +1063,26 @@
   .mobile-route-meta span {
     color: #8fa0b7;
     font-size: 0.82rem;
+  }
+
+  .experience-shell.is-mobile-view.is-immersive .experience-globe-stage {
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0.2rem var(--shell-gutter) 0.75rem;
+    min-height: 15.5rem;
+  }
+
+  .experience-shell.is-mobile-view.is-immersive .experience-globe-frame,
+  .experience-shell.is-mobile-view.is-immersive.has-selection .experience-globe-frame {
+    width: min(72vw, 18rem);
+  }
+
+  .experience-shell.is-mobile-view.is-immersive .trade-globe {
+    align-content: start;
+  }
+
+  .experience-shell.is-mobile-view.is-immersive .trade-tooltip {
+    bottom: 0.8rem;
   }
 
   .sidebar-panel,

@@ -128,6 +128,9 @@ function Home() {
     filters.selectedCommodity === 'all' ? 'All commodities' : filters.selectedCommodity,
     filters.selectedPartner === 'all' ? 'All partners' : filters.selectedPartner,
   ]
+  const mobileSummary = selectedCountry
+    ? `${selectedCountry.name} across ${countryStats?.partnerCount ?? 0} trading partners.`
+    : `${totals.routeCount} active routes worth ${formatCompactCurrency(totals.totalTradeValue)}.`
   const notesPanel = (
     <aside className={`experience-notes ${immersive ? 'is-hidden' : ''}`}>
       <p className="experience-notes-kicker">Open Source Global Trade Project</p>
@@ -183,6 +186,28 @@ function Home() {
 
       {!isMobileView ? notesPanel : null}
 
+      {isMobileView && immersive ? (
+        <section className="mobile-trade-header">
+          <div className="mobile-trade-header-top">
+            <div>
+              <p className="sidebar-kicker">Mobile trade mode</p>
+              <h2>{selectedCountry?.name ?? 'Global trade'}</h2>
+            </div>
+            <button type="button" className="trade-back-button" onClick={handleReturnToLanding}>
+              Back
+            </button>
+          </div>
+          <p className="mobile-trade-summary">{loading ? 'Loading trade data...' : mobileSummary}</p>
+          <div className="mobile-filter-tags" aria-label="Current mobile trade filters">
+            {mobileFilterTags.map((tag) => (
+              <span key={tag} className="trade-pill">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="experience-globe-stage" aria-label="Interactive trade globe">
         <div className="experience-globe-frame">
           <GlobeView
@@ -200,25 +225,6 @@ function Home() {
 
       {isMobileView && immersive ? (
         <>
-          <section className="mobile-trade-header">
-            <div className="mobile-trade-header-top">
-              <div>
-                <p className="sidebar-kicker">Mobile trade mode</p>
-                <h2>{selectedCountry?.name ?? 'Global trade'}</h2>
-              </div>
-              <button type="button" className="trade-back-button" onClick={handleReturnToLanding}>
-                Back
-              </button>
-            </div>
-            <div className="mobile-filter-tags" aria-label="Current mobile trade filters">
-              {mobileFilterTags.map((tag) => (
-                <span key={tag} className="trade-pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </section>
-
           <section className="mobile-filters-shell">
             <Filters
               years={availableYears}
