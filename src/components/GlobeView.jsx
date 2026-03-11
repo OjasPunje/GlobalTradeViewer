@@ -20,8 +20,12 @@ const MOBILE_SELECTED_ZOOM = 2.15
 const DESKTOP_IDLE_ZOOM = 0.8
 const DESKTOP_IMMERSIVE_ZOOM = 1.08
 const DESKTOP_SELECTED_ZOOM = 1.8
+const MIN_ZOOM = 0.78
+const MAX_ZOOM = 3.1
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
+const getPointerDistance = (firstPointer, secondPointer) =>
+  Math.hypot(secondPointer.x - firstPointer.x, secondPointer.y - firstPointer.y)
 
 function createArcPath(flow, projection) {
   let path = ''
@@ -54,6 +58,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const [hovered, setHovered] = useState(null)
   const [isInteracting, setIsInteracting] = useState(false)
   const dragRef = useRef({ active: false, x: 0, y: 0, rotationX: 14, rotationY: -24 })
+  const activePointersRef = useRef(new Map())
+  const pinchRef = useRef({ active: false, distance: 0, zoom: 0.92 })
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
 
   useEffect(() => {
@@ -263,6 +269,21 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
   const handlePointerDown = (event) => {
     onFirstInteract?.()
+    event.currentTarget.setPointerCapture(event.pointerId)
+    activePointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+    if (activePointersRef.current.size === 2) {
+      const [firstPointer, secondPointer] = [...activePointersRef.current.values()]
+      pinchRef.current = {
+        active: true,
+        distance: getPointerDistance(firstPointer, secondPointer),
+        zoom,
+      }
+      dragRef.current.active = false
+      setIsInteracting(true)
+      return
+    }
+
     dragRef.current = {
       active: true,
       x: event.clientX,
@@ -274,6 +295,24 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   }
 
   const handlePointerMove = (event) => {
+    if (!activePointersRef.current.has(event.pointerId)) {
+      return
+    }
+
+    activePointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+    if (pinchRef.current.active && activePointersRef.current.size >= 2) {
+      const [firstPointer, secondPointer] = [...activePointersRef.current.values()]
+      const distance = getPointerDistance(firstPointer, secondPointer)
+
+      if (pinchRef.current.distance > 0) {
+        const zoomRatio = distance / pinchRef.current.distance
+        setZoom(clamp(pinchRef.current.zoom * zoomRatio, MIN_ZOOM, MAX_ZOOM))
+      }
+
+      return
+    }
+
     if (!dragRef.current.active) {
       return
     }
@@ -289,7 +328,27 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     })
   }
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (event) => {
+    activePointersRef.current.delete(event.pointerId)
+    pinchRef.current.active = false
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+
+    if (activePointersRef.current.size === 1) {
+      const [remainingPointer] = [...activePointersRef.current.values()]
+      dragRef.current = {
+        active: true,
+        x: remainingPointer.x,
+        y: remainingPointer.y,
+        rotationX: rotation.x,
+        rotationY: rotation.y,
+      }
+      setIsInteracting(true)
+      return
+    }
+
     dragRef.current.active = false
     setIsInteracting(false)
   }
@@ -297,7 +356,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const handleWheel = (event) => {
     event.preventDefault()
     onFirstInteract?.()
-    setZoom((current) => clamp(current - event.deltaY * 0.0038, 0.78, 3.1))
+    setZoom((current) => clamp(current - event.deltaY * 0.0038, MIN_ZOOM, MAX_ZOOM))
   }
 
   const handleCountryHoverStart = (country) => {
@@ -335,6 +394,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
+      onPointerCancel={handlePointerUp}
       onWheel={handleWheel}
     >
       <div className="trade-globe-frame" ref={frameRef}>
