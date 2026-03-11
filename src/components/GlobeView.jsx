@@ -69,7 +69,40 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const activePointersRef = useRef(new Map())
   const pinchRef = useRef({ active: false, distance: 0, zoom: 0.92 })
   const tapRef = useRef({ countryIso: null, moved: false, pointerId: null })
+  const rotationRef = useRef({ x: 14, y: -24 })
+  const zoomRef = useRef(0.92)
+  const pendingViewRef = useRef({ rotation: { x: 14, y: -24 }, zoom: 0.92 })
+  const renderFrameRef = useRef(null)
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+
+  const scheduleViewState = (nextRotation = rotationRef.current, nextZoom = zoomRef.current) => {
+    rotationRef.current = nextRotation
+    zoomRef.current = nextZoom
+    pendingViewRef.current = { rotation: nextRotation, zoom: nextZoom }
+
+    if (renderFrameRef.current !== null) {
+      return
+    }
+
+    renderFrameRef.current = window.requestAnimationFrame(() => {
+      renderFrameRef.current = null
+      setRotation(pendingViewRef.current.rotation)
+      setZoom(pendingViewRef.current.zoom)
+    })
+  }
+
+  const commitViewState = (nextRotation = rotationRef.current, nextZoom = zoomRef.current) => {
+    if (renderFrameRef.current !== null) {
+      window.cancelAnimationFrame(renderFrameRef.current)
+      renderFrameRef.current = null
+    }
+
+    rotationRef.current = nextRotation
+    zoomRef.current = nextZoom
+    pendingViewRef.current = { rotation: nextRotation, zoom: nextZoom }
+    setRotation(nextRotation)
+    setZoom(nextZoom)
+  }
 
   useEffect(() => {
     const stage = stageRef.current
@@ -88,6 +121,12 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     observer.observe(stage)
     return () => observer.disconnect()
   }, [immersive])
+
+  useEffect(() => () => {
+    if (renderFrameRef.current !== null) {
+      window.cancelAnimationFrame(renderFrameRef.current)
+    }
+  }, [])
 
   useEffect(() => {
     const stage = stageRef.current
@@ -113,12 +152,19 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
   useEffect(() => {
     if (selectedCountry) {
-      setRotation({ x: selectedCountry.lat, y: selectedCountry.lng })
-      setZoom(isTouchDevice ? MOBILE_SELECTED_ZOOM : DESKTOP_SELECTED_ZOOM)
+      commitViewState(
+        { x: selectedCountry.lat, y: selectedCountry.lng },
+        isTouchDevice ? MOBILE_SELECTED_ZOOM : DESKTOP_SELECTED_ZOOM,
+      )
       return
     }
 
-    setZoom(isTouchDevice ? (immersive ? MOBILE_IMMERSIVE_ZOOM : MOBILE_IDLE_ZOOM) : (immersive ? DESKTOP_IMMERSIVE_ZOOM : DESKTOP_IDLE_ZOOM))
+    commitViewState(
+      rotationRef.current,
+      isTouchDevice
+        ? (immersive ? MOBILE_IMMERSIVE_ZOOM : MOBILE_IDLE_ZOOM)
+        : (immersive ? DESKTOP_IMMERSIVE_ZOOM : DESKTOP_IDLE_ZOOM),
+    )
   }, [immersive, isTouchDevice, selectedCountry])
 
   useEffect(() => {
@@ -127,7 +173,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     }
 
     const id = window.setInterval(() => {
-      setRotation((current) => ({ ...current, y: current.y + 0.14 }))
+      scheduleViewState({ ...rotationRef.current, y: rotationRef.current.y + 0.14 }, zoomRef.current)
     }, 16)
 
     return () => window.clearInterval(id)
@@ -161,9 +207,17 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   }, [countries])
 
   const countryFeatureByIso = useMemo(() => {
+    const usedFeatureIds = new Set()
     const entries = countries.map((country) => {
       const matchingFeature = countryFeatures.find((shape) => geoContains(shape, [country.lng, country.lat]))
-      return [country.iso, matchingFeature ?? null]
+      const featureId = matchingFeature?.id ?? null
+      const useFeature = matchingFeature && featureId !== null && !usedFeatureIds.has(featureId)
+
+      if (useFeature) {
+        usedFeatureIds.add(featureId)
+      }
+
+      return [country.iso, useFeature ? matchingFeature : null]
     })
 
     return Object.fromEntries(entries)
@@ -294,7 +348,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       pinchRef.current = {
         active: true,
         distance: getPointerDistance(firstPointer, secondPointer),
-        zoom,
+        zoom: zoomRef.current,
       }
       dragRef.current.active = false
       dragRef.current.pointerId = null
@@ -307,8 +361,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       pointerId: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
-      rotationX: rotation.x,
-      rotationY: rotation.y,
+      rotationX: rotationRef.current.x,
+      rotationY: rotationRef.current.y,
     }
   }
 
@@ -325,7 +379,10 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
       if (pinchRef.current.distance > 0) {
         const zoomRatio = distance / pinchRef.current.distance
-        setZoom(clamp(pinchRef.current.zoom * zoomRatio, MIN_ZOOM, MAX_ZOOM))
+        scheduleViewState(
+          rotationRef.current,
+          clamp(pinchRef.current.zoom * zoomRatio, MIN_ZOOM, MAX_ZOOM),
+        )
       }
 
       return
@@ -354,10 +411,10 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       setIsInteracting(true)
     }
 
-    setRotation({
+    scheduleViewState({
       x: clamp(dragRef.current.rotationX + deltaY * rotationMultiplierX, -70, 70),
       y: dragRef.current.rotationY - deltaX * rotationMultiplierY,
-    })
+    }, zoomRef.current)
   }
 
   const handlePointerUp = (event) => {
@@ -381,8 +438,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
         pointerId: remainingPointerId,
         startX: remainingPointer.x,
         startY: remainingPointer.y,
-        rotationX: rotation.x,
-        rotationY: rotation.y,
+        rotationX: rotationRef.current.x,
+        rotationY: rotationRef.current.y,
       }
       tapRef.current = { countryIso: null, moved: false, pointerId: remainingPointerId }
       return
@@ -406,7 +463,10 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const handleWheel = (event) => {
     event.preventDefault()
     onFirstInteract?.()
-    setZoom((current) => clamp(current - event.deltaY * 0.0038, MIN_ZOOM, MAX_ZOOM))
+    scheduleViewState(
+      rotationRef.current,
+      clamp(zoomRef.current - event.deltaY * 0.0038, MIN_ZOOM, MAX_ZOOM),
+    )
   }
 
   const handleCountryHoverStart = (country) => {
