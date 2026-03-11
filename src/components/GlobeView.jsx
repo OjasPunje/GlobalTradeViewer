@@ -10,6 +10,16 @@ const countryFeatures = feature(atlas, atlas.objects.countries).features
 const borders = mesh(atlas, atlas.objects.countries, (a, b) => a !== b)
 const graticule = geoGraticule10()
 const MAX_RENDERED_ARCS = 90
+const MOBILE_ROTATION_MULTIPLIER_X = 0.34
+const MOBILE_ROTATION_MULTIPLIER_Y = 0.42
+const DESKTOP_ROTATION_MULTIPLIER_X = 0.2
+const DESKTOP_ROTATION_MULTIPLIER_Y = 0.24
+const MOBILE_IDLE_ZOOM = 0.96
+const MOBILE_IMMERSIVE_ZOOM = 1.28
+const MOBILE_SELECTED_ZOOM = 2.15
+const DESKTOP_IDLE_ZOOM = 0.8
+const DESKTOP_IMMERSIVE_ZOOM = 1.08
+const DESKTOP_SELECTED_ZOOM = 1.8
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 
@@ -89,12 +99,12 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   useEffect(() => {
     if (selectedCountry) {
       setRotation({ x: selectedCountry.lat, y: selectedCountry.lng })
-      setZoom(1.8)
+      setZoom(isTouchDevice ? MOBILE_SELECTED_ZOOM : DESKTOP_SELECTED_ZOOM)
       return
     }
 
-    setZoom(immersive ? 1.08 : 0.8)
-  }, [immersive, selectedCountry])
+    setZoom(isTouchDevice ? (immersive ? MOBILE_IMMERSIVE_ZOOM : MOBILE_IDLE_ZOOM) : (immersive ? DESKTOP_IMMERSIVE_ZOOM : DESKTOP_IDLE_ZOOM))
+  }, [immersive, isTouchDevice, selectedCountry])
 
   useEffect(() => {
     if (immersive || selectedCountry || isInteracting) {
@@ -109,9 +119,19 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   }, [immersive, isInteracting, selectedCountry])
 
   const countryCenterByIso = useMemo(() => {
+    const usedCenters = new Set()
     const entries = countries.map((country) => {
       const matchingFeature = countryFeatures.find((shape) => geoContains(shape, [country.lng, country.lat]))
-      const [centerLng, centerLat] = matchingFeature ? geoCentroid(matchingFeature) : [country.lng, country.lat]
+      const [featureLng, featureLat] = matchingFeature ? geoCentroid(matchingFeature) : [country.lng, country.lat]
+      const featureKey = `${featureLat.toFixed(3)}:${featureLng.toFixed(3)}`
+      const useFeatureCenter = matchingFeature && !usedCenters.has(featureKey)
+      const [centerLng, centerLat] = useFeatureCenter
+        ? [featureLng, featureLat]
+        : [country.lng, country.lat]
+
+      if (useFeatureCenter) {
+        usedCenters.add(featureKey)
+      }
 
       return [
         country.iso,
@@ -260,10 +280,12 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
     const deltaX = event.clientX - dragRef.current.x
     const deltaY = event.clientY - dragRef.current.y
+    const rotationMultiplierX = isTouchDevice ? MOBILE_ROTATION_MULTIPLIER_X : DESKTOP_ROTATION_MULTIPLIER_X
+    const rotationMultiplierY = isTouchDevice ? MOBILE_ROTATION_MULTIPLIER_Y : DESKTOP_ROTATION_MULTIPLIER_Y
 
     setRotation({
-      x: clamp(dragRef.current.rotationX + deltaY * 0.2, -70, 70),
-      y: dragRef.current.rotationY - deltaX * 0.24,
+      x: clamp(dragRef.current.rotationX + deltaY * rotationMultiplierX, -70, 70),
+      y: dragRef.current.rotationY - deltaX * rotationMultiplierY,
     })
   }
 
@@ -276,6 +298,33 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     event.preventDefault()
     onFirstInteract?.()
     setZoom((current) => clamp(current - event.deltaY * 0.0038, 0.78, 3.1))
+  }
+
+  const handleCountryHoverStart = (country) => {
+    if (isTouchDevice) {
+      return
+    }
+
+    setHovered({ label: country.name, detail: country.iso, countryIso: country.iso })
+  }
+
+  const handleCountryHoverEnd = () => {
+    if (isTouchDevice) {
+      return
+    }
+
+    setHovered(null)
+  }
+
+  const handleArcHoverStart = (flow) => {
+    if (isTouchDevice) {
+      return
+    }
+
+    setHovered({
+      label: `${flow.exporter} to ${flow.importer}`,
+      detail: `${flow.commodityLabel ?? flow.commodity} · ${formatCompactCurrency(flow.valueUsd)}`,
+    })
   }
 
   return (
@@ -318,8 +367,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                 className={`trade-country-hit-area ${selectedCountry?.iso === country.iso ? 'is-selected' : ''}`}
                 d={shapePath}
                 onClick={() => onCountryClick(country)}
-                onMouseEnter={() => setHovered({ label: country.name, detail: country.iso, countryIso: country.iso })}
-                onMouseLeave={() => setHovered(null)}
+                onMouseEnter={() => handleCountryHoverStart(country)}
+                onMouseLeave={handleCountryHoverEnd}
               />
             ))}
             {projectedArcs.map((flow) => (
@@ -329,11 +378,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                 d={flow.path}
                 stroke={TRADE_CATEGORY_COLORS[flow.colorKey] ?? '#ffffff'}
                 strokeWidth={1.1}
-                onMouseEnter={() => setHovered({
-                  label: `${flow.exporter} to ${flow.importer}`,
-                  detail: `${flow.commodityLabel ?? flow.commodity} · ${formatCompactCurrency(flow.valueUsd)}`,
-                })}
-                onMouseLeave={() => setHovered(null)}
+                onMouseEnter={() => handleArcHoverStart(flow)}
+                onMouseLeave={handleCountryHoverEnd}
               />
             ))}
             {projectedCountries.map((country) =>
@@ -343,8 +389,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                   className="trade-country-node"
                   transform={`translate(${country.x}, ${country.y})`}
                   onClick={() => onCountryClick(country)}
-                  onMouseEnter={() => setHovered({ label: country.name, detail: country.iso, countryIso: country.iso })}
-                  onMouseLeave={() => setHovered(null)}
+                  onMouseEnter={() => handleCountryHoverStart(country)}
+                  onMouseLeave={handleCountryHoverEnd}
                 >
                   <circle
                     className={`trade-country-dot ${selectedCountry?.iso === country.iso ? 'is-selected' : ''}`}
@@ -362,7 +408,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
         </svg>
       </div>
 
-      {hovered ? (
+      {hovered && !isTouchDevice ? (
         <div className="trade-tooltip">
           <strong>{hovered.label}</strong>
           <span>{hovered.detail}</span>
