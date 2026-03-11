@@ -115,6 +115,7 @@
 }
 
 .experience-notes {
+  z-index: 2;
   top: 50%;
   right: 4.5vw;
   width: min(21rem, 24vw);
@@ -166,6 +167,15 @@
   margin: 0;
   color: #eef3fb;
   line-height: 1.45;
+}
+
+.experience-note-link {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.experience-note-link:hover {
+  color: #ffffff;
 }
 
 .trade-pill-list {

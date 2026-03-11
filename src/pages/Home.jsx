@@ -140,11 +140,25 @@ function Home() {
       </div>
       <div className="experience-note-block">
         <span className="experience-note-label">LinkedIn</span>
-        <p className="experience-note-value">https://www.linkedin.com/in/ojaspunje/</p>
+        <a
+          className="experience-note-value experience-note-link"
+          href="https://www.linkedin.com/in/ojaspunje/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          https://www.linkedin.com/in/ojaspunje/
+        </a>
       </div>
       <div className="experience-note-block">
         <span className="experience-note-label">GitHub</span>
-        <p className="experience-note-value">https://github.com/OjasPunje</p>
+        <a
+          className="experience-note-value experience-note-link"
+          href="https://github.com/OjasPunje"
+          target="_blank"
+          rel="noreferrer"
+        >
+          https://github.com/OjasPunje
+        </a>
       </div>
       <div className="experience-note-block">
         <span className="experience-note-label">Source</span>

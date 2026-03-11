@@ -10,8 +10,8 @@ const countryFeatures = feature(atlas, atlas.objects.countries).features
 const borders = mesh(atlas, atlas.objects.countries, (a, b) => a !== b)
 const graticule = geoGraticule10()
 const MAX_RENDERED_ARCS = 90
-const MOBILE_ROTATION_MULTIPLIER_X = 0.34
-const MOBILE_ROTATION_MULTIPLIER_Y = 0.42
+const MOBILE_ROTATION_MULTIPLIER_X = 0.58
+const MOBILE_ROTATION_MULTIPLIER_Y = 0.72
 const DESKTOP_ROTATION_MULTIPLIER_X = 0.2
 const DESKTOP_ROTATION_MULTIPLIER_Y = 0.24
 const MOBILE_IDLE_ZOOM = 0.96
