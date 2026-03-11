@@ -1,11 +1,14 @@
 :root {
   color: #f5f7fa;
   background: #05070b;
+  --shell-gutter: 1rem;
 }
 
 .experience-shell {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
   height: 100vh;
   overflow: hidden;
   background:
@@ -314,6 +317,7 @@
 .filters-reset {
   align-self: end;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .trade-globe {
@@ -557,6 +561,11 @@
   line-height: 1.5;
 }
 
+.routes-empty {
+  margin: 0 0 0.9rem;
+  color: #9aa6b8;
+}
+
 .routes-table-wrap {
   height: 100%;
   padding: 1rem;
@@ -717,65 +726,299 @@
 }
 
 @media (max-width: 960px) {
-  .experience-hero {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .experience-shell,
+  .experience-shell.is-immersive {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    padding: 0;
+    gap: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .experience-hero,
+  .experience-notes,
+  .experience-globe-stage,
+  .trade-controls,
+  .trade-sidebar-shell,
+  .trade-routes-shell,
+  .experience-shell.is-immersive .experience-globe-stage,
+  .experience-shell.is-immersive .trade-controls,
+  .experience-shell.is-immersive .trade-sidebar-shell,
+  .experience-shell.is-immersive .trade-routes-shell {
+    position: relative;
+    inset: auto;
     width: auto;
+    opacity: 1;
+    transform: none;
+  }
+
+  .experience-hero {
     justify-content: flex-start;
-    padding: 2rem 1.25rem 0;
+    padding: 1.5rem var(--shell-gutter) 0.75rem;
     gap: 1rem;
   }
 
   .experience-hero h1 {
-    max-width: 12ch;
-    font-size: clamp(2.4rem, 12vw, 4rem);
+    max-width: 11ch;
+    font-size: clamp(2.4rem, 12vw, 3.6rem);
   }
 
   .experience-notes {
-    right: 1rem;
-    bottom: 1rem;
-    top: auto;
-    width: min(20rem, calc(100vw - 2rem));
-    transform: none;
+    margin: 0 var(--shell-gutter);
+    width: auto;
   }
 
   .experience-notes.is-hidden {
-    transform: translateY(2rem);
+    display: none;
   }
 
   .experience-globe-stage {
-    align-items: flex-end;
-    padding: 8.5rem 1rem 1.25rem;
+    padding: 1rem var(--shell-gutter) 1.25rem;
+    min-height: auto;
   }
 
   .experience-globe-frame {
-    width: min(92vw, calc(100vh - 10rem), 560px);
+    width: min(100%, 36rem);
+    margin: 0 auto;
   }
 
-  .experience-shell.is-immersive {
-    padding: 0.85rem;
+  .trade-controls {
+    display: none;
+    padding: 0 var(--shell-gutter);
+    z-index: 2;
+  }
+
+  .trade-controls.is-visible {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .trade-controls-row {
     gap: 0.85rem;
   }
 
   .filters-bar {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 1.1rem;
   }
 
   .filters-search {
-    grid-column: 1 / -1;
+    grid-column: auto;
+  }
+
+  .filters-search-row {
+    grid-template-columns: 1fr;
   }
 
   .trade-legend {
-    left: 1rem;
-    right: 1rem;
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.9rem;
     max-width: none;
   }
 
+  .trade-entry-hint {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 1rem;
+    width: auto;
+    justify-content: center;
+    transform: none;
+    text-align: center;
+  }
+
+  .trade-entry-hint.is-hidden {
+    transform: translateY(1rem);
+  }
+
+  .trade-tooltip {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 4.5rem;
+  }
+
+  .trade-nav-hints {
+    align-items: stretch;
+  }
+
+  .trade-back-button {
+    min-height: 2.9rem;
+  }
+
+  .trade-escape-hint {
+    text-align: center;
+  }
+
+  .trade-sidebar-shell,
+  .trade-routes-shell {
+    display: none;
+    padding: 0 var(--shell-gutter) 1rem;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .trade-sidebar-shell.is-visible,
+  .trade-routes-shell.is-visible {
+    display: block;
+  }
+
+  .sidebar-panel,
+  .routes-table-wrap {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .sidebar-panel {
+    padding: 1rem;
+  }
+
+  .sidebar-panel h2,
+  .routes-table-head h2 {
+    font-size: 1.45rem;
+  }
+
+  .sidebar-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sidebar-block li {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .routes-table-wrap {
+    padding: 1rem;
+  }
+
+  .routes-table,
+  .routes-table thead,
+  .routes-table tbody,
+  .routes-table tr,
   .routes-table th,
   .routes-table td {
-    padding: 0.6rem 0.42rem;
-    font-size: 0.92rem;
+    display: block;
+  }
+
+  .routes-table thead {
+    display: none;
+  }
+
+  .routes-table tbody {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .routes-table tr {
+    padding: 0.2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .routes-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+  }
+
+  .routes-table td:first-child {
+    border-top: 0;
+  }
+
+  .routes-table td::before {
+    content: attr(data-label);
+    color: #8fa0b7;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --shell-gutter: 0.8rem;
+  }
+
+  .experience-hero {
+    padding-top: 1.2rem;
+  }
+
+  .experience-kicker,
+  .sidebar-kicker,
+  .experience-legend,
+  .experience-notes-kicker,
+  .experience-note-label {
+    letter-spacing: 0.14em;
+  }
+
+  .experience-legend {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .experience-lede {
+    font-size: 0.96rem;
+  }
+
+  .experience-notes {
+    padding: 1rem;
+    border-radius: 1.15rem;
+  }
+
+  .experience-globe-stage {
+    padding-bottom: 1rem;
+  }
+
+  .experience-globe-frame,
+  .experience-shell.is-immersive .experience-globe-frame,
+  .experience-shell.is-immersive.has-selection .experience-globe-frame {
+    width: min(100%, 30rem);
+  }
+
+  .trade-country-label {
+    font-size: 10px;
+  }
+
+  .trade-legend span {
+    font-size: 0.68rem;
+  }
+
+  .sidebar-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-bar select,
+  .filters-bar input,
+  .filters-search-button,
+  .filters-reset,
+  .trade-back-button {
+    min-height: 3rem;
   }
 }

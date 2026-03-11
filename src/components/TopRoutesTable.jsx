@@ -37,6 +37,9 @@ function TopRoutesTable({ routes }) {
           <h2>Filtered trade corridors</h2>
         </div>
       </div>
+      {sortedRoutes.length === 0 ? (
+        <p className="routes-empty">No trade corridors match the current filters.</p>
+      ) : null}
       <table className="routes-table">
         <thead>
           <tr>
@@ -50,11 +53,11 @@ function TopRoutesTable({ routes }) {
         <tbody>
           {sortedRoutes.map((route) => (
             <tr key={route.id}>
-              <td>{route.exporter}</td>
-              <td>{route.importer}</td>
-              <td>{route.commodityLabel ?? route.commodity}</td>
-              <td>{formatCurrency(route.valueUsd)}</td>
-              <td>{route.year}</td>
+              <td data-label="Exporter">{route.exporter}</td>
+              <td data-label="Importer">{route.importer}</td>
+              <td data-label="Commodity">{route.commodityLabel ?? route.commodity}</td>
+              <td data-label="Value">{formatCurrency(route.valueUsd)}</td>
+              <td data-label="Year">{route.year}</td>
             </tr>
           ))}
         </tbody>
