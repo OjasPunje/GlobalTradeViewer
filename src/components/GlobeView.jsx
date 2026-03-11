@@ -22,6 +22,7 @@ const DESKTOP_IMMERSIVE_ZOOM = 1.08
 const DESKTOP_SELECTED_ZOOM = 1.8
 const MIN_ZOOM = 0.78
 const MAX_ZOOM = 3.1
+const TAP_SELECTION_THRESHOLD = 10
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 const getPointerDistance = (firstPointer, secondPointer) =>
@@ -57,9 +58,17 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const [zoom, setZoom] = useState(0.92)
   const [hovered, setHovered] = useState(null)
   const [isInteracting, setIsInteracting] = useState(false)
-  const dragRef = useRef({ active: false, x: 0, y: 0, rotationX: 14, rotationY: -24 })
+  const dragRef = useRef({
+    active: false,
+    pointerId: null,
+    startX: 0,
+    startY: 0,
+    rotationX: 14,
+    rotationY: -24,
+  })
   const activePointersRef = useRef(new Map())
   const pinchRef = useRef({ active: false, distance: 0, zoom: 0.92 })
+  const tapRef = useRef({ countryIso: null, moved: false, pointerId: null })
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
 
   useEffect(() => {
@@ -159,6 +168,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
     return Object.fromEntries(entries)
   }, [countries])
+
+  const countryByIso = useMemo(() => Object.fromEntries(countries.map((country) => [country.iso, country])), [countries])
 
   const projection = useMemo(() => {
     const scale = globeSize * 0.34 * zoom
@@ -269,10 +280,16 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
   const handlePointerDown = (event) => {
     onFirstInteract?.()
-    event.currentTarget.setPointerCapture(event.pointerId)
     activePointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+    const tappedCountryIso = event.target.closest?.('[data-country-iso]')?.dataset.countryIso ?? null
+    tapRef.current = {
+      countryIso: tappedCountryIso,
+      moved: false,
+      pointerId: event.pointerId,
+    }
 
     if (activePointersRef.current.size === 2) {
+      event.currentTarget.setPointerCapture(event.pointerId)
       const [firstPointer, secondPointer] = [...activePointersRef.current.values()]
       pinchRef.current = {
         active: true,
@@ -280,18 +297,19 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
         zoom,
       }
       dragRef.current.active = false
+      dragRef.current.pointerId = null
       setIsInteracting(true)
       return
     }
 
     dragRef.current = {
-      active: true,
-      x: event.clientX,
-      y: event.clientY,
+      active: false,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
       rotationX: rotation.x,
       rotationY: rotation.y,
     }
-    setIsInteracting(true)
   }
 
   const handlePointerMove = (event) => {
@@ -313,14 +331,28 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       return
     }
 
-    if (!dragRef.current.active) {
+    if (dragRef.current.pointerId !== event.pointerId) {
       return
     }
 
-    const deltaX = event.clientX - dragRef.current.x
-    const deltaY = event.clientY - dragRef.current.y
+    const deltaX = event.clientX - dragRef.current.startX
+    const deltaY = event.clientY - dragRef.current.startY
     const rotationMultiplierX = isTouchDevice ? MOBILE_ROTATION_MULTIPLIER_X : DESKTOP_ROTATION_MULTIPLIER_X
     const rotationMultiplierY = isTouchDevice ? MOBILE_ROTATION_MULTIPLIER_Y : DESKTOP_ROTATION_MULTIPLIER_Y
+
+    if (Math.hypot(deltaX, deltaY) > TAP_SELECTION_THRESHOLD) {
+      tapRef.current.moved = true
+    }
+
+    if (!dragRef.current.active) {
+      if (!tapRef.current.moved) {
+        return
+      }
+
+      event.currentTarget.setPointerCapture(event.pointerId)
+      dragRef.current.active = true
+      setIsInteracting(true)
+    }
 
     setRotation({
       x: clamp(dragRef.current.rotationX + deltaY * rotationMultiplierX, -70, 70),
@@ -329,6 +361,12 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   }
 
   const handlePointerUp = (event) => {
+    const shouldSelectTappedCountry =
+      tapRef.current.pointerId === event.pointerId &&
+      tapRef.current.countryIso &&
+      !tapRef.current.moved &&
+      !pinchRef.current.active
+
     activePointersRef.current.delete(event.pointerId)
     pinchRef.current.active = false
 
@@ -337,20 +375,32 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     }
 
     if (activePointersRef.current.size === 1) {
-      const [remainingPointer] = [...activePointersRef.current.values()]
+      const [[remainingPointerId, remainingPointer]] = [...activePointersRef.current.entries()]
       dragRef.current = {
-        active: true,
-        x: remainingPointer.x,
-        y: remainingPointer.y,
+        active: false,
+        pointerId: remainingPointerId,
+        startX: remainingPointer.x,
+        startY: remainingPointer.y,
         rotationX: rotation.x,
         rotationY: rotation.y,
       }
-      setIsInteracting(true)
+      tapRef.current = { countryIso: null, moved: false, pointerId: remainingPointerId }
       return
     }
 
     dragRef.current.active = false
+    dragRef.current.pointerId = null
     setIsInteracting(false)
+
+    if (shouldSelectTappedCountry) {
+      const tappedCountry = countryByIso[tapRef.current.countryIso]
+
+      if (tappedCountry) {
+        onCountryClick(tappedCountry)
+      }
+    }
+
+    tapRef.current = { countryIso: null, moved: false, pointerId: null }
   }
 
   const handleWheel = (event) => {
@@ -425,8 +475,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
               <path
                 key={`hit-${country.iso}`}
                 className={`trade-country-hit-area ${selectedCountry?.iso === country.iso ? 'is-selected' : ''}`}
+                data-country-iso={country.iso}
                 d={shapePath}
-                onClick={() => onCountryClick(country)}
                 onMouseEnter={() => handleCountryHoverStart(country)}
                 onMouseLeave={handleCountryHoverEnd}
               />
@@ -447,8 +497,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                 <g
                   key={country.iso}
                   className="trade-country-node"
+                  data-country-iso={country.iso}
                   transform={`translate(${country.x}, ${country.y})`}
-                  onClick={() => onCountryClick(country)}
                   onMouseEnter={() => handleCountryHoverStart(country)}
                   onMouseLeave={handleCountryHoverEnd}
                 >
