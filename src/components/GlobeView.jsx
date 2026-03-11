@@ -10,6 +10,7 @@ const countryFeatures = feature(atlas, atlas.objects.countries).features
 const borders = mesh(atlas, atlas.objects.countries, (a, b) => a !== b)
 const graticule = geoGraticule10()
 const MAX_RENDERED_ARCS = 90
+const MOBILE_INTERACTION_ARC_LIMIT = 24
 const MOBILE_ROTATION_MULTIPLIER_X = 0.58
 const MOBILE_ROTATION_MULTIPLIER_Y = 0.72
 const DESKTOP_ROTATION_MULTIPLIER_X = 0.2
@@ -28,9 +29,8 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 const getPointerDistance = (firstPointer, secondPointer) =>
   Math.hypot(secondPointer.x - firstPointer.x, secondPointer.y - firstPointer.y)
 
-function createArcPath(flow, projection) {
+function createArcPath(flow, projection, segments = 12) {
   let path = ''
-  const segments = 12
 
   for (let step = 0; step <= segments; step += 1) {
     const t = step / segments
@@ -74,6 +74,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
   const pendingViewRef = useRef({ rotation: { x: 14, y: -24 }, zoom: 0.92 })
   const renderFrameRef = useRef(null)
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+  const isMobilePerformanceMode = isTouchDevice && isInteracting
 
   const scheduleViewState = (nextRotation = rotationRef.current, nextZoom = zoomRef.current) => {
     rotationRef.current = nextRotation
@@ -233,8 +234,8 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       .scale(scale)
       .rotate([-rotation.y, -rotation.x])
       .clipAngle(90)
-      .precision(0.5)
-  }, [globeSize, rotation.x, rotation.y, zoom])
+      .precision(isMobilePerformanceMode ? 1.3 : 0.5)
+  }, [globeSize, isMobilePerformanceMode, rotation.x, rotation.y, zoom])
 
   const path = useMemo(() => geoPath(projection), [projection])
   const displayArcs = useMemo(() => {
@@ -242,8 +243,9 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
       return []
     }
 
-    return [...arcs].sort((a, b) => b.valueUsd - a.valueUsd).slice(0, MAX_RENDERED_ARCS)
-  }, [arcs, selectedCountry])
+    const arcLimit = isMobilePerformanceMode ? MOBILE_INTERACTION_ARC_LIMIT : MAX_RENDERED_ARCS
+    return [...arcs].sort((a, b) => b.valueUsd - a.valueUsd).slice(0, arcLimit)
+  }, [arcs, isMobilePerformanceMode, selectedCountry])
 
   const connectedCountryIsos = useMemo(() => {
     if (!selectedCountry) {
@@ -286,6 +288,9 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
   const projectedCountryShapes = useMemo(
     () =>
+      isMobilePerformanceMode
+        ? []
+        :
       projectedCountries
         .map((country) => {
           const featureShape = countryFeatureByIso[country.iso]
@@ -301,14 +306,16 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
           }
         })
         .filter(Boolean),
-    [countryFeatureByIso, path, projectedCountries],
+    [countryFeatureByIso, isMobilePerformanceMode, path, projectedCountries],
   )
 
   const projectedArcs = useMemo(
     () => {
-      if (!selectedCountry) {
+      if (!selectedCountry || isMobilePerformanceMode) {
         return []
       }
+
+      const arcSegments = isTouchDevice ? 8 : 12
 
       return displayArcs.map((flow) => {
         const exporterIso = flow.exporterIso ?? flow.exporterIso3
@@ -325,12 +332,20 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
 
         return {
           ...arcFlow,
-          path: createArcPath(arcFlow, projection),
+          path: createArcPath(arcFlow, projection, arcSegments),
         }
       })
     },
-    [countryCenterByIso, displayArcs, projection, selectedCountry],
+    [countryCenterByIso, displayArcs, isMobilePerformanceMode, isTouchDevice, projection, selectedCountry],
   )
+
+  const renderedCountries = useMemo(() => {
+    if (!isMobilePerformanceMode) {
+      return projectedCountries
+    }
+
+    return projectedCountries.filter((country) => selectedCountry?.iso === country.iso)
+  }, [isMobilePerformanceMode, projectedCountries, selectedCountry])
 
   const handlePointerDown = (event) => {
     onFirstInteract?.()
@@ -528,9 +543,9 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
           <path className="trade-globe-sphere" d={path({ type: 'Sphere' })} fill="url(#trade-globe-fill)" />
           <path className="trade-globe-rim" d={path({ type: 'Sphere' })} />
           <g clipPath="url(#trade-globe-clip)">
-            <path className="trade-globe-grid" d={path(graticule)} />
+            {!isMobilePerformanceMode ? <path className="trade-globe-grid" d={path(graticule)} /> : null}
             <path className="trade-globe-land" d={path(land)} />
-            <path className="trade-globe-borders" d={path(borders)} />
+            {!isMobilePerformanceMode ? <path className="trade-globe-borders" d={path(borders)} /> : null}
             {projectedCountryShapes.map(({ country, shapePath }) => (
               <path
                 key={`hit-${country.iso}`}
@@ -552,7 +567,7 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
                 onMouseLeave={handleCountryHoverEnd}
               />
             ))}
-            {projectedCountries.map((country) =>
+            {renderedCountries.map((country) =>
               country.visible ? (
                 <g
                   key={country.iso}
