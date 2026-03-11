@@ -18,6 +18,19 @@ function renderList(items, labelKey, emptyLabel) {
 }
 
 function Sidebar({ selectedCountry, profile, countryStats, globalTotals, source, loading, error }) {
+  if (selectedCountry && (!profile || !countryStats)) {
+    return (
+      <aside className="sidebar-panel">
+        <p className="sidebar-kicker">Country profile</p>
+        <h2>{selectedCountry.name}</h2>
+        <p className="sidebar-footer">
+          {loading ? 'Loading country trade profile...' : 'Country profile is unavailable right now.'}
+        </p>
+        {error ? <p className="sidebar-empty">{error}</p> : null}
+      </aside>
+    )
+  }
+
   if (!selectedCountry || !profile || !countryStats) {
     return (
       <aside className="sidebar-panel">

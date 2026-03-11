@@ -15,6 +15,8 @@ export function useCountryProfile(selectedCountry, year) {
     }
 
     let cancelled = false
+    setProfile(null)
+    setError(null)
     setLoading(true)
 
     fetchCountryProfile({

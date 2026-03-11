@@ -28,47 +28,55 @@ function Filters({ years, commodities, countries, filters, selectedCountry, onCh
     <section className="filters-bar" aria-label="Trade filters">
       <label>
         <span>Year</span>
-        <select value={filters.selectedYear} onChange={(event) => onChange('selectedYear', event.target.value === 'all' ? 'all' : Number(event.target.value))}>
-          <option value="all">All years</option>
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year === 2025 ? `${year} (partial)` : year}
-            </option>
-          ))}
-        </select>
+        <div className="filters-select-wrap">
+          <select value={filters.selectedYear} onChange={(event) => onChange('selectedYear', event.target.value === 'all' ? 'all' : Number(event.target.value))}>
+            <option value="all">All years</option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year === 2025 ? `${year} (partial)` : year}
+              </option>
+            ))}
+          </select>
+        </div>
       </label>
 
       <label>
         <span>Commodity</span>
-        <select value={filters.selectedCommodity} onChange={(event) => onChange('selectedCommodity', event.target.value)}>
-          <option value="all">All commodities</option>
-          {commodities.map((commodity) => (
-            <option key={commodity} value={commodity}>
-              {commodity}
-            </option>
-          ))}
-        </select>
+        <div className="filters-select-wrap">
+          <select value={filters.selectedCommodity} onChange={(event) => onChange('selectedCommodity', event.target.value)}>
+            <option value="all">All commodities</option>
+            {commodities.map((commodity) => (
+              <option key={commodity} value={commodity}>
+                {commodity}
+              </option>
+            ))}
+          </select>
+        </div>
       </label>
 
       <label>
         <span>Direction</span>
-        <select value={filters.selectedDirection} onChange={(event) => onChange('selectedDirection', event.target.value)}>
-          <option value="both">Both</option>
-          <option value="exports">Exports</option>
-          <option value="imports">Imports</option>
-        </select>
+        <div className="filters-select-wrap">
+          <select value={filters.selectedDirection} onChange={(event) => onChange('selectedDirection', event.target.value)}>
+            <option value="both">Both</option>
+            <option value="exports">Exports</option>
+            <option value="imports">Imports</option>
+          </select>
+        </div>
       </label>
 
       <label>
         <span>Partner</span>
-        <select value={filters.selectedPartner} onChange={(event) => onChange('selectedPartner', event.target.value)}>
-          <option value="all">All partners</option>
-          {countries.map((country) => (
-            <option key={country.iso} value={country.iso}>
-              {country.name}
-            </option>
-          ))}
-        </select>
+        <div className="filters-select-wrap">
+          <select value={filters.selectedPartner} onChange={(event) => onChange('selectedPartner', event.target.value)}>
+            <option value="all">All partners</option>
+            {countries.map((country) => (
+              <option key={country.iso} value={country.iso}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </label>
 
       <label className="filters-search">

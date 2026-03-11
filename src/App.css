@@ -282,6 +282,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  min-width: 0;
 }
 
 .filters-bar span {
@@ -291,16 +292,43 @@
   text-transform: uppercase;
 }
 
+.filters-select-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.filters-select-wrap::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.7);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
 .filters-bar select,
 .filters-bar input,
 .filters-search-button,
 .filters-reset {
+  width: 100%;
+  max-width: 100%;
   min-height: 2.9rem;
   padding: 0 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.9rem;
   color: #f5f7fa;
   background: rgba(255, 255, 255, 0.04);
+  min-width: 0;
+}
+
+.filters-bar select {
+  appearance: none;
+  padding-right: 2.6rem;
+  text-overflow: ellipsis;
 }
 
 .filters-bar select option {
@@ -311,6 +339,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.55rem;
+  min-width: 0;
 }
 
 .filters-search-button,
@@ -382,17 +411,27 @@
   cursor: pointer;
 }
 
+.trade-country-hit-area {
+  fill: rgba(255, 255, 255, 0.001);
+  stroke: transparent;
+  stroke-width: 6;
+  cursor: pointer;
+}
+
+.trade-country-hit-area.is-selected {
+  fill: rgba(96, 165, 250, 0.1);
+}
+
 .trade-country-dot {
   fill: #f5f7fa;
   fill-opacity: 1;
-  stroke: rgba(4, 7, 12, 0.72);
-  stroke-width: 0.9;
+  stroke: none;
 }
 
 .trade-country-dot.is-selected {
   fill: #60a5fa;
-  stroke: rgba(4, 7, 12, 0.58);
-  stroke-width: 1.1;
+  stroke: rgba(4, 7, 12, 0.4);
+  stroke-width: 0.8;
 }
 
 .trade-country-label {
@@ -787,6 +826,10 @@
     gap: 1rem;
   }
 
+  .experience-shell.is-mobile-view.is-immersive .experience-hero.is-hidden {
+    display: none;
+  }
+
   .experience-hero h1 {
     max-width: 11ch;
     font-size: clamp(2.4rem, 12vw, 3.6rem);
@@ -839,6 +882,9 @@
     gap: 0.75rem;
     padding: 1rem;
     border-radius: 1.1rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .filters-search {
@@ -847,6 +893,19 @@
 
   .filters-search-row {
     grid-template-columns: 1fr;
+  }
+
+  .filters-bar label,
+  .filters-bar select,
+  .filters-bar input,
+  .filters-search-row,
+  .filters-search-button,
+  .filters-reset,
+  .mobile-filters-shell,
+  .mobile-filters-shell .filters-bar {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .trade-legend {
@@ -920,6 +979,7 @@
 
   .mobile-trade-header {
     padding-top: 0.1rem;
+    padding-bottom: 0.2rem;
   }
 
   .mobile-trade-header-top,
@@ -933,9 +993,7 @@
   }
 
   .mobile-trade-header-top,
-  .mobile-filters-shell .filters-bar,
-  .mobile-panel,
-  .mobile-routes {
+  .mobile-filters-shell .filters-bar {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.2rem;
     background: rgba(8, 11, 18, 0.88);
@@ -960,19 +1018,28 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.45rem;
-    margin-top: 0.65rem;
+    margin-top: 0.45rem;
   }
 
   .mobile-trade-summary {
-    margin: 0.7rem 0 0;
+    margin: 0.45rem 0 0;
     color: #9aa6b8;
     font-size: 0.92rem;
     line-height: 1.45;
   }
 
+  .mobile-panel-shell,
+  .mobile-routes-shell {
+    padding-top: 0.2rem;
+  }
+
   .mobile-panel,
   .mobile-routes {
-    padding: 1rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .mobile-panel-stat-grid {
@@ -1068,13 +1135,13 @@
   .experience-shell.is-mobile-view.is-immersive .experience-globe-stage {
     align-items: flex-start;
     justify-content: center;
-    padding: 0.2rem var(--shell-gutter) 0.75rem;
-    min-height: 15.5rem;
+    padding: 0 var(--shell-gutter) 0.45rem;
+    min-height: 13.5rem;
   }
 
   .experience-shell.is-mobile-view.is-immersive .experience-globe-frame,
   .experience-shell.is-mobile-view.is-immersive.has-selection .experience-globe-frame {
-    width: min(72vw, 18rem);
+    width: min(78vw, 19.5rem);
   }
 
   .experience-shell.is-mobile-view.is-immersive .trade-globe {

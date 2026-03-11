@@ -125,6 +125,15 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
     return Object.fromEntries(entries)
   }, [countries])
 
+  const countryFeatureByIso = useMemo(() => {
+    const entries = countries.map((country) => {
+      const matchingFeature = countryFeatures.find((shape) => geoContains(shape, [country.lng, country.lat]))
+      return [country.iso, matchingFeature ?? null]
+    })
+
+    return Object.fromEntries(entries)
+  }, [countries])
+
   const projection = useMemo(() => {
     const scale = globeSize * 0.34 * zoom
 
@@ -182,6 +191,26 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
         })
         .sort((a, b) => a.y - b.y),
     [connectedCountryIsos, countries, countryCenterByIso, projection, rotation.x, rotation.y],
+  )
+
+  const projectedCountryShapes = useMemo(
+    () =>
+      projectedCountries
+        .map((country) => {
+          const featureShape = countryFeatureByIso[country.iso]
+          const shapePath = featureShape ? path(featureShape) : null
+
+          if (!country.visible || !shapePath) {
+            return null
+          }
+
+          return {
+            country,
+            shapePath,
+          }
+        })
+        .filter(Boolean),
+    [countryFeatureByIso, path, projectedCountries],
   )
 
   const projectedArcs = useMemo(
@@ -283,6 +312,16 @@ function GlobeView({ immersive, arcs, countries, selectedCountry, onFirstInterac
             <path className="trade-globe-grid" d={path(graticule)} />
             <path className="trade-globe-land" d={path(land)} />
             <path className="trade-globe-borders" d={path(borders)} />
+            {projectedCountryShapes.map(({ country, shapePath }) => (
+              <path
+                key={`hit-${country.iso}`}
+                className={`trade-country-hit-area ${selectedCountry?.iso === country.iso ? 'is-selected' : ''}`}
+                d={shapePath}
+                onClick={() => onCountryClick(country)}
+                onMouseEnter={() => setHovered({ label: country.name, detail: country.iso, countryIso: country.iso })}
+                onMouseLeave={() => setHovered(null)}
+              />
+            ))}
             {projectedArcs.map((flow) => (
               <path
                 key={flow.id}

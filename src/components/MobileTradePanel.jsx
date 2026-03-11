@@ -26,6 +26,19 @@ function MobileTradePanel({
   loading,
   error,
 }) {
+  if (selectedCountry && (!profile || !countryStats)) {
+    return (
+      <section className="mobile-panel">
+        <p className="sidebar-kicker">Country profile</p>
+        <h2>{selectedCountry.name}</h2>
+        <p className="mobile-panel-footer">
+          {loading ? 'Loading country trade profile...' : 'Country profile is unavailable right now.'}
+        </p>
+        {error ? <p className="mobile-panel-empty">{error}</p> : null}
+      </section>
+    )
+  }
+
   if (!selectedCountry || !profile || !countryStats) {
     return (
       <section className="mobile-panel">
