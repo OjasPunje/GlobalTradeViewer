@@ -15,8 +15,11 @@ const initialFilters = {
   selectedPartner: 'all',
 }
 
+const MOBILE_MEDIA_QUERY = '(max-width: 960px)'
+
 function Home() {
   const [immersive, setImmersive] = useState(false)
+  const [isMobileView, setIsMobileView] = useState(false)
   const [selectedCountry, setSelectedCountry] = useState(null)
   const [filters, setFilters] = useState(initialFilters)
   const { countries } = useCountries()
@@ -30,6 +33,16 @@ function Home() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY)
+    const syncMobileView = () => setIsMobileView(mediaQuery.matches)
+
+    syncMobileView()
+    mediaQuery.addEventListener('change', syncMobileView)
+
+    return () => mediaQuery.removeEventListener('change', syncMobileView)
   }, [])
 
   const mergedFilters = useMemo(
@@ -107,10 +120,45 @@ function Home() {
     filters.selectedYear === 2025
       ? '2025 is partial seed coverage. Full annual OEC trade coverage is currently stronger through 2024 in this app.'
       : null
+  const notesPanel = (
+    <aside className={`experience-notes ${immersive ? 'is-hidden' : ''}`}>
+      <p className="experience-notes-kicker">Open Source Global Trade Project</p>
+      <div className="experience-note-block">
+        <span className="experience-note-label">Created by</span>
+        <p className="experience-note-value">Ojas Punje</p>
+      </div>
+      <div className="experience-note-block">
+        <span className="experience-note-label">LinkedIn</span>
+        <p className="experience-note-value">https://www.linkedin.com/in/ojaspunje/</p>
+      </div>
+      <div className="experience-note-block">
+        <span className="experience-note-label">GitHub</span>
+        <p className="experience-note-value">https://github.com/OjasPunje</p>
+      </div>
+      <div className="experience-note-block">
+        <span className="experience-note-label">Source</span>
+        <p className="experience-note-value">{loading ? 'Resolving data source...' : sourceLabel}</p>
+        {sourceMeta ? <p className="experience-note-value">{sourceMeta}</p> : null}
+      </div>
+      <div className="experience-note-block">
+        <span className="experience-note-label">Snapshot</span>
+        <p className="experience-note-value">
+          {loading
+            ? 'Loading trade flows...'
+            : source === 'oec'
+              ? `${totals.routeCount} active routes worth ${formatCompactCurrency(totals.totalTradeValue)}.`
+              : 'Live trade data is not currently available.'}
+        </p>
+        {partialYearNote ? <p className="experience-note-value">{partialYearNote}</p> : null}
+        {resolvedYearNote ? <p className="experience-note-value">{resolvedYearNote}</p> : null}
+        {error ? <p className="experience-note-value">{error}</p> : null}
+      </div>
+    </aside>
+  )
 
   return (
     <main
-      className={`experience-shell ${immersive ? 'is-immersive' : ''} ${selectedCountry ? 'has-selection' : ''}`}
+      className={`experience-shell ${immersive ? 'is-immersive' : ''} ${selectedCountry ? 'has-selection' : ''} ${isMobileView ? 'is-mobile-view' : ''}`}
     >
       <section className={`experience-hero ${immersive ? 'is-hidden' : ''}`}>
         <p className="experience-kicker">Global Trade Tracker</p>
@@ -125,39 +173,7 @@ function Home() {
         </div>
       </section>
 
-      <aside className={`experience-notes ${immersive ? 'is-hidden' : ''}`}>
-        <p className="experience-notes-kicker">Open Source Global Trade Project</p>
-        <div className="experience-note-block">
-          <span className="experience-note-label">Created by</span>
-          <p className="experience-note-value">Ojas Punje</p>
-        </div>
-        <div className="experience-note-block">
-          <span className="experience-note-label">LinkedIn</span>
-          <p className="experience-note-value">https://www.linkedin.com/in/ojaspunje/</p>
-        </div>
-        <div className="experience-note-block">
-          <span className="experience-note-label">GitHub</span>
-          <p className="experience-note-value">https://github.com/OjasPunje</p>
-        </div>
-        <div className="experience-note-block">
-          <span className="experience-note-label">Source</span>
-          <p className="experience-note-value">{loading ? 'Resolving data source...' : sourceLabel}</p>
-          {sourceMeta ? <p className="experience-note-value">{sourceMeta}</p> : null}
-        </div>
-        <div className="experience-note-block">
-          <span className="experience-note-label">Snapshot</span>
-          <p className="experience-note-value">
-            {loading
-              ? 'Loading trade flows...'
-              : source === 'oec'
-                ? `${totals.routeCount} active routes worth ${formatCompactCurrency(totals.totalTradeValue)}.`
-                : 'Live trade data is not currently available.'}
-          </p>
-          {partialYearNote ? <p className="experience-note-value">{partialYearNote}</p> : null}
-          {resolvedYearNote ? <p className="experience-note-value">{resolvedYearNote}</p> : null}
-          {error ? <p className="experience-note-value">{error}</p> : null}
-        </div>
-      </aside>
+      {!isMobileView ? notesPanel : null}
 
       <section className="experience-globe-stage" aria-label="Interactive trade globe">
         <div className="experience-globe-frame">
@@ -171,6 +187,8 @@ function Home() {
           />
         </div>
       </section>
+
+      {isMobileView ? notesPanel : null}
 
       <section className={`trade-controls ${immersive ? 'is-visible' : ''}`}>
         <div className="trade-controls-row">

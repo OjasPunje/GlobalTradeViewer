@@ -787,6 +787,10 @@
     width: auto;
   }
 
+  .experience-shell.is-mobile-view .experience-notes {
+    margin-bottom: 1rem;
+  }
+
   .experience-notes.is-hidden {
     display: none;
   }
@@ -794,6 +798,10 @@
   .experience-globe-stage {
     padding: 1rem var(--shell-gutter) 1.25rem;
     min-height: auto;
+  }
+
+  .experience-shell.is-mobile-view:not(.is-immersive) .experience-globe-stage {
+    padding-bottom: 0.9rem;
   }
 
   .experience-globe-frame {
