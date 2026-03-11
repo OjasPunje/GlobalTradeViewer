@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import GlobeView from '../components/GlobeView.jsx'
 import Filters from '../components/Filters.jsx'
+import MobileRoutesList from '../components/MobileRoutesList.jsx'
+import MobileTradePanel from '../components/MobileTradePanel.jsx'
 import Sidebar from '../components/Sidebar.jsx'
 import TopRoutesTable from '../components/TopRoutesTable.jsx'
 import { useCountries } from '../hooks/useCountries.js'
@@ -120,6 +122,12 @@ function Home() {
     filters.selectedYear === 2025
       ? '2025 is partial seed coverage. Full annual OEC trade coverage is currently stronger through 2024 in this app.'
       : null
+  const mobileFilterTags = [
+    filters.selectedYear === 'all' ? 'All years' : `Year ${filters.selectedYear}`,
+    filters.selectedDirection === 'both' ? 'Both directions' : filters.selectedDirection,
+    filters.selectedCommodity === 'all' ? 'All commodities' : filters.selectedCommodity,
+    filters.selectedPartner === 'all' ? 'All partners' : filters.selectedPartner,
+  ]
   const notesPanel = (
     <aside className={`experience-notes ${immersive ? 'is-hidden' : ''}`}>
       <p className="experience-notes-kicker">Open Source Global Trade Project</p>
@@ -190,7 +198,59 @@ function Home() {
 
       {isMobileView ? notesPanel : null}
 
-      <section className={`trade-controls ${immersive ? 'is-visible' : ''}`}>
+      {isMobileView && immersive ? (
+        <>
+          <section className="mobile-trade-header">
+            <div className="mobile-trade-header-top">
+              <div>
+                <p className="sidebar-kicker">Mobile trade mode</p>
+                <h2>{selectedCountry?.name ?? 'Global trade'}</h2>
+              </div>
+              <button type="button" className="trade-back-button" onClick={handleReturnToLanding}>
+                Back
+              </button>
+            </div>
+            <div className="mobile-filter-tags" aria-label="Current mobile trade filters">
+              {mobileFilterTags.map((tag) => (
+                <span key={tag} className="trade-pill">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          <section className="mobile-filters-shell">
+            <Filters
+              years={availableYears}
+              commodities={availableCommodities}
+              countries={countries}
+              filters={filters}
+              selectedCountry={selectedCountry}
+              onChange={handleFilterChange}
+              onReset={handleReset}
+              onCountrySearch={handleCountrySearch}
+            />
+          </section>
+
+          <section className="mobile-panel-shell">
+            <MobileTradePanel
+              selectedCountry={selectedCountry}
+              profile={selectedProfile}
+              countryStats={countryStats}
+              globalTotals={totals}
+              source={source}
+              loading={loading || profileLoading}
+              error={profileError ?? error}
+            />
+          </section>
+
+          <section className="mobile-routes-shell">
+            <MobileRoutesList routes={topRoutes} />
+          </section>
+        </>
+      ) : null}
+
+      <section className={`trade-controls ${immersive && !isMobileView ? 'is-visible' : ''}`}>
         <div className="trade-controls-row">
           <Filters
             years={availableYears}
@@ -213,7 +273,7 @@ function Home() {
         </div>
       </section>
 
-      <section className={`trade-sidebar-shell ${immersive ? 'is-visible' : ''}`}>
+      <section className={`trade-sidebar-shell ${immersive && !isMobileView ? 'is-visible' : ''}`}>
         <Sidebar
           selectedCountry={selectedCountry}
           profile={selectedProfile}
@@ -225,7 +285,7 @@ function Home() {
         />
       </section>
 
-      <section className={`trade-routes-shell ${immersive ? 'is-visible' : ''}`}>
+      <section className={`trade-routes-shell ${immersive && !isMobileView ? 'is-visible' : ''}`}>
         <TopRoutesTable routes={topRoutes} />
       </section>
     </main>
